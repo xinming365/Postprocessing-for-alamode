@@ -1,0 +1,36 @@
+&general
+  PREFIX = pc_rta
+  MODE = RTA
+  NKD = 3
+  KD =   Br  Cs  Sn
+  MASS = 79.904 132.91 118.71
+  FCSXML = uc.xml
+  FC2XML = uc_2nd_300K.xml
+  NONANALYTIC = 3
+  #NA_SIGMA = 0.3
+  BORNINFO = BORN
+  BORNSYM = 1
+  EMIN = 0
+  EMAX = 1200
+  DELTA_E = 2
+  TMIN = 300
+  TMAX = 300
+  ISMEAR = -1
+  EPSILON = 2
+  BCONNECT = 2
+  TRISYM = 1
+/
+&cell
+  1.8897261254578282 # factor in Bohr unit
+        5.7566682669002551    0.0000000000000000   -0.0000000000000000
+       -0.0000000000000000    5.7566682669002551   -0.0000000000000000
+       -0.0000000000000000    0.0000000000000000    5.7566682669002551
+/
+&kpoint
+  2  # KPMODE = 2: Uniform k grid for phonon DOS and thermal conductivity
+  12 12 12
+/
+&analysis
+  KAPPA_SPEC = 1
+  ISOTOPE = 2
+/

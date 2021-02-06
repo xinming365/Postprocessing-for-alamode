@@ -1,0 +1,39 @@
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    100.00         2.2641        -0.0000        -0.0000        -0.0000         2.2641        -0.0000        -0.0000        -0.0000         2.2641
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    150.00         1.8495        -0.0000        -0.0000        -0.0000         1.8495        -0.0000        -0.0000        -0.0000         1.8495
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    200.00         1.5929         0.0000         0.0000         0.0000         1.5929         0.0000         0.0000         0.0000         1.5929
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    250.00         1.4523         0.0000        -0.0000         0.0000         1.4523         0.0000        -0.0000         0.0000         1.4523
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    300.00         1.3530        -0.0000        -0.0000        -0.0000         1.3530         0.0000        -0.0000         0.0000         1.3530
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    350.00         1.2758         0.0000        -0.0000         0.0000         1.2758         0.0000        -0.0000         0.0000         1.2758
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    400.00         1.2275        -0.0000        -0.0000        -0.0000         1.2275         0.0000        -0.0000         0.0000         1.2275
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    450.00         1.1830        -0.0000         0.0000        -0.0000         1.1830         0.0000         0.0000         0.0000         1.1830
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    500.00         1.1480        -0.0000         0.0000        -0.0000         1.1480         0.0000         0.0000         0.0000         1.1480
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    550.00         1.1171         0.0000         0.0000         0.0000         1.1171         0.0000         0.0000         0.0000         1.1171
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    600.00         1.0916         0.0000         0.0000         0.0000         1.0916        -0.0000         0.0000        -0.0000         1.0916
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    650.00         1.0718         0.0000         0.0000         0.0000         1.0718        -0.0000         0.0000        -0.0000         1.0718
+# Temperature [K], Thermal Conductivity (xx, xy, xz, yx, yy, yz, zx, zy, zz) [W/mK]
+# Isotope effects are included.
+    700.00         1.0537        -0.0000         0.0000        -0.0000         1.0537         0.0000         0.0000         0.0000         1.0537

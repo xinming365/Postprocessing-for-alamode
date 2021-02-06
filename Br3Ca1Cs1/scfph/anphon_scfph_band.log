@@ -1,0 +1,3781 @@
+ +-----------------------------------------------------------------+
+ +                         Program ANPHON                          +
+ +                             Ver.  1.1.0                         +
+ +-----------------------------------------------------------------+
+
+ Job started at Tue Oct 27 15:36:13 2020
+
+ The number of MPI processes: 1
+ The number of OpenMP threads: 24
+
+
+ Input variables:
+ -----------------------------------------------------------------
+ General:
+  PREFIX = pc_scfph
+  MODE = SCPH
+  FCSXML = uc.xml
+  FC2XML = uc_2nd.xml
+
+  NKD = 3; KD =   Br  Ca  Cs
+  MASS =     79.904    40.078    132.91
+  NSYM = 0; TOLERANCE = 1e-06; PRINTSYM = 0
+
+  NONANALYTIC = 2
+  BORNINFO = BORN; NA_SIGMA = 0.1
+
+  TMIN = 100; TMAX = 700; DT = 50
+  EMIN = 0; EMAX = 1200; DELTA_E = 2
+
+  ISMEAR = -1; EPSILON = 10
+
+  CLASSICAL = 0
+  BCONNECT = 2
+
+ Scph:
+  KMESH_INTERPOLATE =     2    2    2
+  KMESH_SCPH        =     4    4    4
+  SELF_OFFDIAG = 1
+  IALGO = 0
+
+  RESTART_SCPH = 0
+  LOWER_TEMP = 1
+  WARMSTART = 1
+
+  TOL_SCPH = 1e-10
+  MAXITER = 1000
+  MIXALPHA = 0.1
+
+ Kpoint:
+  KPMODE (1st entry for &kpoint) = 1
+
+
+ Analysis:
+
+
+ -----------------------------------------------------------------
+
+                        MODE = SCPH                           
+                                                             
+      Self-consistent phonon calculation to estimate         
+      anharmonic phonon frequencies.                         
+      Harmonic and quartic force constants will be used.  
+
+ -----------------------------------------------------------------
+
+ Crystal structure
+ =================
+
+ Lattice Vectors:
+
+ * Supercell (from uc.xml )
+
+    2.134264e+01   0.000000e+00   0.000000e+00 : a1
+    0.000000e+00   2.134264e+01   0.000000e+00 : a2
+    0.000000e+00   0.000000e+00   2.134264e+01 : a3
+
+    2.943959e-01   0.000000e+00   0.000000e+00 : b1
+    0.000000e+00   2.943959e-01   0.000000e+00 : b2
+    0.000000e+00   0.000000e+00   2.943959e-01 : b3
+
+ * Primitive cell 
+
+    1.067132e+01   0.000000e+00   0.000000e+00 : a1
+    0.000000e+00   1.067132e+01   0.000000e+00 : a2
+    0.000000e+00   0.000000e+00   1.067132e+01 : a3
+
+    5.887919e-01   0.000000e+00   0.000000e+00 : b1
+    0.000000e+00   5.887919e-01   0.000000e+00 : b2
+    0.000000e+00   0.000000e+00   5.887919e-01 : b3
+
+
+  Volume of the primitive cell : 1.215218e+03 (a.u.)^3
+
+  Number of atoms in the supercell     : 40
+  Number of atoms in the primitive cell: 5
+
+
+  FC2XML is given: Harmonic IFCs will be replaced by the values in uc_2nd.xml
+
+ * Supercell for HARMONIC (from uc_2nd.xml )
+
+    2.134264e+01   0.000000e+00   0.000000e+00 : a1
+    0.000000e+00   2.134264e+01   0.000000e+00 : a2
+    0.000000e+00   0.000000e+00   2.134264e+01 : a3
+
+    2.943959e-01   0.000000e+00   0.000000e+00 : b1
+    0.000000e+00   2.943959e-01   0.000000e+00 : b2
+    0.000000e+00   0.000000e+00   2.943959e-01 : b3
+
+  Number of atoms in the supercell (HARMONIC)   : 40
+
+  Atomic positions in the primitive cell (fractional):
+   1:   0.000000e+00   5.000000e-01   5.000000e-01  Br
+   2:   5.000000e-01   0.000000e+00   5.000000e-01  Br
+   3:   5.000000e-01   5.000000e-01   0.000000e+00  Br
+   4:   5.000000e-01   5.000000e-01   5.000000e-01  Ca
+   5:   0.000000e+00   0.000000e+00   0.000000e+00  Cs
+
+  Mass of atomic species (u):
+  Br:   79.904000
+  Ca:   40.078000
+  Cs:  132.910000
+
+
+ Symmetry
+ ========
+
+  NSYM = 0 is given: Trying to find symmetry operations.
+  Number of symmetry operations : 48
+
+ k points
+ ========
+
+  KPMODE = 1: Band structure calculation
+  Number of paths : 5
+
+  List of k paths : 
+   1:  G (  0.0000  0.0000  0.0000)  X (  0.0000  0.5000  0.0000)  50
+   2:  X (  0.0000  0.5000  0.0000)  M (  0.5000  0.5000  0.0000)  50
+   3:  M (  0.5000  0.5000  0.0000)  G (  0.0000  0.0000  0.0000)  50
+   4:  G (  0.0000  0.0000  0.0000)  R (  0.5000  0.5000  0.5000)  50
+   5:  R (  0.5000  0.5000  0.5000)  M (  0.0000  0.5000  0.0000)  50
+
+  Number of k points : 250
+
+ Force constant
+ ==============
+
+  Reading force constants from the XML file ... done !
+  Number of non-zero IFCs for 2 order: 1593
+  Number of non-zero IFCs for 3 order: 314004
+  Number of non-zero IFCs for 4 order: 4474047
+
+  Maximum deviation from the translational invariance: 
+   Order 2 :   1.5461e-16
+   Order 3 :   1.9843e-16
+   Order 4 :   5.0394e-16
+
+
+ Dynamical matrix
+ ================
+
+  NONANALYTIC = 2 : Non-analytic part of the dynamical matrix will be included 
+                    by the mixed-space approach.
+
+  Dielectric constants and Born effective charges are read from BORN.
+
+  Dielectric constant tensor in Cartesian coordinate : 
+     3.1401e+00     0.0000e+00     0.0000e+00
+     0.0000e+00     3.1401e+00     0.0000e+00
+     0.0000e+00    -0.0000e+00     3.1401e+00
+
+  Born effective charge tensor in Cartesian coordinate
+  Atom    1( Br) :
+      -2.045100      -0.000000       0.000000
+       0.000000      -0.891350       0.000000
+       0.000000      -0.000000      -0.891350
+  Atom    2( Br) :
+      -0.891350      -0.000000      -0.000000
+       0.000000      -2.045100      -0.000000
+       0.000000      -0.000000      -0.891350
+  Atom    3( Br) :
+      -0.891350      -0.000000      -0.000000
+       0.000000      -0.891350      -0.000000
+      -0.000000       0.000000      -2.045100
+  Atom    4( Ca) :
+       2.474970      -0.000000      -0.000000
+      -0.000000       2.474970       0.000000
+      -0.000000       0.000000       2.474970
+  Atom    5( Cs) :
+       1.352820       0.000000      -0.000000
+       0.000000       1.352820       0.000000
+      -0.000000       0.000000       1.352820
+
+  WARNING: Born effective charges do not satisfy the acoustic sum rule.
+           The born effective charges are modified to satisfy the ASR.
+
+  Symmetrized Born effective charge tensor in Cartesian coordinate.
+  Atom    1( Br) :
+      -2.045098       0.000000       0.000000
+       0.000000      -0.891348       0.000000
+       0.000000       0.000000      -0.891348
+  Atom    2( Br) :
+      -0.891348       0.000000       0.000000
+       0.000000      -2.045098       0.000000
+       0.000000       0.000000      -0.891348
+  Atom    3( Br) :
+      -0.891348       0.000000       0.000000
+       0.000000      -0.891348       0.000000
+       0.000000       0.000000      -2.045098
+  Atom    4( Ca) :
+       2.474972       0.000000       0.000000
+       0.000000       2.474972       0.000000
+       0.000000       0.000000       2.474972
+  Atom    5( Cs) :
+       1.352822       0.000000       0.000000
+       0.000000       1.352822       0.000000
+       0.000000       0.000000       1.352822
+
+ -----------------------------------------------------------------
+
+ Now, move on to phonon calculations.
+
+ Diagonalizing dynamical matrices for all k points ... done!
+ Setting up the SCPH calculations ...
+
+  Gamma-centered uniform grid with the following mesh density:
+  nk1:    4
+  nk2:    4
+  nk3:    4
+
+  Number of k points : 64
+  Number of irreducible k points : 10
+
+  Fourier interpolation from reciprocal to real space
+  will be performed with the following mesh density:
+  nk1:    2
+  nk2:    2
+  nk3:    2
+
+  Number of k points : 8
+  Number of irreducible k points : 4
+
+ Diagonalizing dynamical matrices for all k points ... done !
+ Preparing for calculating V4  ... done!
+ SELF_OFFDIAG = 1: Calculating all components of v4_array ...  done !
+
+ Time Elapsed: 3.000019e+02 sec.
+
+ Temperature = 7.000000e+02 K
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     1 :  DIFF = N/A
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     2 :  DIFF =    1.977015e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     3 :  DIFF =    1.737197e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     4 :  DIFF =    1.560811e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     5 :  DIFF =    1.430172e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     6 :  DIFF =    1.218386e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     7 :  DIFF =    1.140264e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     8 :  DIFF =    1.141834e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 4
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 4
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 5
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 4
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 5
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 6
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     9 :  DIFF =    1.185478e-04
+ Detect imaginary :   knum = 1 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 1 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =    0.000000e+00
+  onsite V4 is negative
+
+ Detect imaginary :   knum = 3 is = 1
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 2
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 3 is = 3
+  xk =    0.000000e+00  xk =    0.000000e+00  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 2
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 11 is = 3
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    10 :  DIFF =    1.082649e-04
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    11 :  DIFF =    1.604351e-04
+  SCPH ITER    12 :  DIFF =    1.943555e-04
+  SCPH ITER    13 :  DIFF =    4.856267e-05
+  SCPH ITER    14 :  DIFF =    3.535853e-05
+  SCPH ITER    15 :  DIFF =    3.665327e-05
+  SCPH ITER    16 :  DIFF =    3.241837e-05
+  SCPH ITER    17 :  DIFF =    2.994766e-05
+  SCPH ITER    18 :  DIFF =    2.676958e-05
+  SCPH ITER    19 :  DIFF =    2.395273e-05
+  SCPH ITER    20 :  DIFF =    2.175081e-05
+  SCPH ITER    21 :  DIFF =    1.966911e-05
+  SCPH ITER    22 :  DIFF =    1.743573e-05
+  SCPH ITER    23 :  DIFF =    1.576603e-05
+  SCPH ITER    24 :  DIFF =    1.426271e-05
+  SCPH ITER    25 :  DIFF =    1.274976e-05
+  SCPH ITER    26 :  DIFF =    1.125189e-05
+  SCPH ITER    27 :  DIFF =    1.008208e-05
+  SCPH ITER    28 :  DIFF =    8.909766e-06
+  SCPH ITER    29 :  DIFF =    7.836128e-06
+  SCPH ITER    30 :  DIFF =    6.821845e-06
+  SCPH ITER    31 :  DIFF =    5.966131e-06
+  SCPH ITER    32 :  DIFF =    5.139828e-06
+  SCPH ITER    33 :  DIFF =    4.441564e-06
+  SCPH ITER    34 :  DIFF =    3.800014e-06
+  SCPH ITER    35 :  DIFF =    3.233588e-06
+  SCPH ITER    36 :  DIFF =    2.737625e-06
+  SCPH ITER    37 :  DIFF =    2.306985e-06
+  SCPH ITER    38 :  DIFF =    1.936148e-06
+  SCPH ITER    39 :  DIFF =    1.619369e-06
+  SCPH ITER    40 :  DIFF =    1.350840e-06
+  SCPH ITER    41 :  DIFF =    1.124848e-06
+  SCPH ITER    42 :  DIFF =    9.359179e-07
+  SCPH ITER    43 :  DIFF =    7.789167e-07
+  SCPH ITER    44 :  DIFF =    6.491331e-07
+  SCPH ITER    45 :  DIFF =    5.423196e-07
+  SCPH ITER    46 :  DIFF =    4.547082e-07
+  SCPH ITER    47 :  DIFF =    3.830045e-07
+  SCPH ITER    48 :  DIFF =    3.243672e-07
+  SCPH ITER    49 :  DIFF =    2.763772e-07
+  SCPH ITER    50 :  DIFF =    2.370014e-07
+  SCPH ITER    51 :  DIFF =    2.045532e-07
+  SCPH ITER    52 :  DIFF =    1.776528e-07
+  SCPH ITER    53 :  DIFF =    1.551853e-07
+  SCPH ITER    54 :  DIFF =    1.362618e-07
+  SCPH ITER    55 :  DIFF =    1.201806e-07
+  SCPH ITER    56 :  DIFF =    1.063929e-07
+  SCPH ITER    57 :  DIFF =    9.447178e-08
+  SCPH ITER    58 :  DIFF =    8.408576e-08
+  SCPH ITER    59 :  DIFF =    7.497704e-08
+  SCPH ITER    60 :  DIFF =    6.694406e-08
+  SCPH ITER    61 :  DIFF =    5.982775e-08
+  SCPH ITER    62 :  DIFF =    5.350112e-08
+  SCPH ITER    63 :  DIFF =    4.786131e-08
+  SCPH ITER    64 :  DIFF =    4.282373e-08
+  SCPH ITER    65 :  DIFF =    3.831773e-08
+  SCPH ITER    66 :  DIFF =    3.428343e-08
+  SCPH ITER    67 :  DIFF =    3.066936e-08
+  SCPH ITER    68 :  DIFF =    2.743080e-08
+  SCPH ITER    69 :  DIFF =    2.452849e-08
+  SCPH ITER    70 :  DIFF =    2.192773e-08
+  SCPH ITER    71 :  DIFF =    1.959759e-08
+  SCPH ITER    72 :  DIFF =    1.751048e-08
+  SCPH ITER    73 :  DIFF =    1.564163e-08
+  SCPH ITER    74 :  DIFF =    1.396879e-08
+  SCPH ITER    75 :  DIFF =    1.247193e-08
+  SCPH ITER    76 :  DIFF =    1.113302e-08
+  SCPH ITER    77 :  DIFF =    9.935817e-09
+  SCPH ITER    78 :  DIFF =    8.865692e-09
+  SCPH ITER    79 :  DIFF =    7.909471e-09
+  SCPH ITER    80 :  DIFF =    7.055290e-09
+  SCPH ITER    81 :  DIFF =    6.292481e-09
+  SCPH ITER    82 :  DIFF =    5.611457e-09
+  SCPH ITER    83 :  DIFF =    5.003597e-09
+  SCPH ITER    84 :  DIFF =    4.461162e-09
+  SCPH ITER    85 :  DIFF =    3.977214e-09
+  SCPH ITER    86 :  DIFF =    3.545521e-09
+  SCPH ITER    87 :  DIFF =    3.160504e-09
+  SCPH ITER    88 :  DIFF =    2.817177e-09
+  SCPH ITER    89 :  DIFF =    2.511050e-09
+  SCPH ITER    90 :  DIFF =    2.238139e-09
+  SCPH ITER    91 :  DIFF =    1.994852e-09
+  SCPH ITER    92 :  DIFF =    1.777998e-09
+  SCPH ITER    93 :  DIFF =    1.584714e-09
+  SCPH ITER    94 :  DIFF =    1.412455e-09
+  SCPH ITER    95 :  DIFF =    1.258930e-09
+  SCPH ITER    96 :  DIFF =    1.122132e-09
+  SCPH ITER    97 :  DIFF =    1.000207e-09
+  SCPH ITER    98 :  DIFF =    8.915510e-10
+  SCPH ITER    99 :  DIFF =    7.947320e-10
+  SCPH ITER   100 :  DIFF =    7.084536e-10
+  SCPH ITER   101 :  DIFF =    6.315791e-10
+  SCPH ITER   102 :  DIFF =    5.630530e-10
+  SCPH ITER   103 :  DIFF =    5.019999e-10
+  SCPH ITER   104 :  DIFF =    4.475826e-10
+  SCPH ITER   105 :  DIFF =    3.991000e-10
+  SCPH ITER   106 :  DIFF =    3.558656e-10
+  SCPH ITER   107 :  DIFF =    3.173567e-10
+  SCPH ITER   108 :  DIFF =    2.830389e-10
+  SCPH ITER   109 :  DIFF =    2.524126e-10
+  SCPH ITER   110 :  DIFF =    2.251788e-10
+  SCPH ITER   111 :  DIFF =    2.009032e-10
+  SCPH ITER   112 :  DIFF =    1.792594e-10
+  SCPH ITER   113 :  DIFF =    1.598002e-10
+  SCPH ITER   114 :  DIFF =    1.427017e-10
+  SCPH ITER   115 :  DIFF =    1.273461e-10
+  SCPH ITER   116 :  DIFF =    1.135560e-10
+  SCPH ITER   117 :  DIFF =    1.016374e-10
+  SCPH ITER   118 :  DIFF =    9.081034e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 7.000000e+02 : convergence achieved in   118 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    2.822518e-22
+ ik_interpolate =     1 is =     3 omega2 =    1.371674e-21
+ ik_interpolate =     1 is =     4 omega2 =    2.191099e-07
+ ik_interpolate =     1 is =     5 omega2 =    2.191099e-07
+ ik_interpolate =     1 is =     6 omega2 =    2.191099e-07
+ ik_interpolate =     1 is =     7 omega2 =    2.439466e-07
+ ik_interpolate =     1 is =     8 omega2 =    2.439466e-07
+ ik_interpolate =     1 is =     9 omega2 =    2.439466e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.908809e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.908809e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.908809e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.591442e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.591442e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.591442e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.351452e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.351452e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.418232e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.418232e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.405615e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.786928e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.983887e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.983887e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.741542e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.523520e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.523520e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.039753e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.600544e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.600544e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.758457e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.351452e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.351452e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.418232e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.418232e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.405615e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.786928e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.983887e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.983887e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.741542e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.523520e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.523520e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.039753e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.600544e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.600544e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.758457e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    5.549367e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.729863e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.943530e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.943530e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.702227e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.702227e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.882107e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.882107e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.741927e-07
+ ik_interpolate =     4 is =    10 omega2 =    5.033699e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.461984e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.235282e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.602613e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.649882e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.649882e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.351452e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.351452e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.418232e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.418232e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.405615e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.786928e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.983887e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.983887e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.741542e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.523520e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.523520e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.039753e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.600544e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.600544e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.758457e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    5.549367e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.729863e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.943530e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.943530e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.702227e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.702227e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.882107e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.882107e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.741927e-07
+ ik_interpolate =     6 is =    10 omega2 =    5.033699e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.461984e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.235282e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.602613e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.649882e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.649882e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    5.549367e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.729863e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.943530e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.943530e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.702227e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.702227e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.882107e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.882107e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.741927e-07
+ ik_interpolate =     7 is =    10 omega2 =    5.033699e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.461984e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.235282e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.602613e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.649882e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.649882e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    5.145023e-08
+ ik_interpolate =     8 is =     2 omega2 =    5.145023e-08
+ ik_interpolate =     8 is =     3 omega2 =    5.145023e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.805411e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.805411e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.805411e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.717903e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.717903e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.717903e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.443228e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.443228e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.401150e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.669311e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.669311e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.669311e-06
+
+ Temperature = 6.500000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    6.810514e-07
+  SCPH ITER     3 :  DIFF =    5.467688e-07
+  SCPH ITER     4 :  DIFF =    4.397764e-07
+  SCPH ITER     5 :  DIFF =    3.542223e-07
+  SCPH ITER     6 :  DIFF =    2.856231e-07
+  SCPH ITER     7 :  DIFF =    2.305030e-07
+  SCPH ITER     8 :  DIFF =    1.861422e-07
+  SCPH ITER     9 :  DIFF =    1.503970e-07
+  SCPH ITER    10 :  DIFF =    1.215678e-07
+  SCPH ITER    11 :  DIFF =    9.830104e-08
+  SCPH ITER    12 :  DIFF =    7.951471e-08
+  SCPH ITER    13 :  DIFF =    6.434138e-08
+  SCPH ITER    14 :  DIFF =    5.208405e-08
+  SCPH ITER    15 :  DIFF =    4.218164e-08
+  SCPH ITER    16 :  DIFF =    3.418182e-08
+  SCPH ITER    17 :  DIFF =    2.771957e-08
+  SCPH ITER    18 :  DIFF =    2.249998e-08
+  SCPH ITER    19 :  DIFF =    1.828473e-08
+  SCPH ITER    20 :  DIFF =    1.488104e-08
+  SCPH ITER    21 :  DIFF =    1.213295e-08
+  SCPH ITER    22 :  DIFF =    9.914274e-09
+  SCPH ITER    23 :  DIFF =    8.122853e-09
+  SCPH ITER    24 :  DIFF =    6.676008e-09
+  SCPH ITER    25 :  DIFF =    5.506823e-09
+  SCPH ITER    26 :  DIFF =    4.561145e-09
+  SCPH ITER    27 :  DIFF =    3.795200e-09
+  SCPH ITER    28 :  DIFF =    3.173591e-09
+  SCPH ITER    29 :  DIFF =    2.667794e-09
+  SCPH ITER    30 :  DIFF =    2.254833e-09
+  SCPH ITER    31 :  DIFF =    1.916234e-09
+  SCPH ITER    32 :  DIFF =    1.637219e-09
+  SCPH ITER    33 :  DIFF =    1.405986e-09
+  SCPH ITER    34 :  DIFF =    1.213180e-09
+  SCPH ITER    35 :  DIFF =    1.051346e-09
+  SCPH ITER    36 :  DIFF =    9.146309e-10
+  SCPH ITER    37 :  DIFF =    7.983304e-10
+  SCPH ITER    38 :  DIFF =    6.988194e-10
+  SCPH ITER    39 :  DIFF =    6.131670e-10
+  SCPH ITER    40 :  DIFF =    5.391087e-10
+  SCPH ITER    41 :  DIFF =    4.747829e-10
+  SCPH ITER    42 :  DIFF =    4.185216e-10
+  SCPH ITER    43 :  DIFF =    3.693299e-10
+  SCPH ITER    44 :  DIFF =    3.261605e-10
+  SCPH ITER    45 :  DIFF =    2.882544e-10
+  SCPH ITER    46 :  DIFF =    2.547694e-10
+  SCPH ITER    47 :  DIFF =    2.252825e-10
+  SCPH ITER    48 :  DIFF =    1.992203e-10
+  SCPH ITER    49 :  DIFF =    1.761191e-10
+  SCPH ITER    50 :  DIFF =    1.557837e-10
+  SCPH ITER    51 :  DIFF =    1.377288e-10
+  SCPH ITER    52 :  DIFF =    1.221834e-10
+  SCPH ITER    53 :  DIFF =    1.080221e-10
+  SCPH ITER    54 :  DIFF =    9.525895e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 6.500000e+02 : convergence achieved in    54 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     3 omega2 =    2.025785e-22
+ ik_interpolate =     1 is =     4 omega2 =    2.145637e-07
+ ik_interpolate =     1 is =     5 omega2 =    2.145637e-07
+ ik_interpolate =     1 is =     6 omega2 =    2.145637e-07
+ ik_interpolate =     1 is =     7 omega2 =    2.362085e-07
+ ik_interpolate =     1 is =     8 omega2 =    2.362085e-07
+ ik_interpolate =     1 is =     9 omega2 =    2.362085e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.858643e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.858643e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.858643e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.579096e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.579096e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.579096e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.325350e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.325350e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.382986e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.382986e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.362519e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.728735e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.914340e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.914340e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.694692e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.484327e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.484327e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.037329e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.588169e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.588169e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.751330e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.325350e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.325350e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.382986e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.382986e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.362519e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.728735e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.914340e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.914340e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.694692e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.484327e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.484327e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.037329e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.588169e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.588169e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.751330e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    5.211126e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.671278e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.903677e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.903677e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.657691e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.657691e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.815691e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.815691e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.728294e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.980351e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.459722e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.232481e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.590618e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.645475e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.645475e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.325350e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.325350e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.382986e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.382986e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.362519e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.728735e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.914340e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.914340e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.694692e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.484327e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.484327e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.037329e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.588169e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.588169e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.751330e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    5.211126e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.671278e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.903677e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.903677e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.657691e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.657691e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.815691e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.815691e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.728294e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.980351e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.459722e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.232481e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.590618e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.645475e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.645475e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    5.211126e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.671278e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.903677e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.903677e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.657691e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.657691e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.815691e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.815691e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.728294e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.980351e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.459722e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.232481e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.590618e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.645475e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.645475e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    4.802334e-08
+ ik_interpolate =     8 is =     2 omega2 =    4.802334e-08
+ ik_interpolate =     8 is =     3 omega2 =    4.802334e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.760912e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.760912e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.760912e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.647598e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.647598e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.647598e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.441348e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.441348e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.397190e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.667623e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.667623e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.667623e-06
+
+ Temperature = 6.000000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    7.215937e-07
+  SCPH ITER     3 :  DIFF =    5.782593e-07
+  SCPH ITER     4 :  DIFF =    4.644157e-07
+  SCPH ITER     5 :  DIFF =    3.736109e-07
+  SCPH ITER     6 :  DIFF =    3.009481e-07
+  SCPH ITER     7 :  DIFF =    2.426582e-07
+  SCPH ITER     8 :  DIFF =    1.958095e-07
+  SCPH ITER     9 :  DIFF =    1.581016e-07
+  SCPH ITER    10 :  DIFF =    1.277180e-07
+  SCPH ITER    11 :  DIFF =    1.032159e-07
+  SCPH ITER    12 :  DIFF =    8.344548e-08
+  SCPH ITER    13 :  DIFF =    6.748644e-08
+  SCPH ITER    14 :  DIFF =    5.460077e-08
+  SCPH ITER    15 :  DIFF =    4.419523e-08
+  SCPH ITER    16 :  DIFF =    3.579214e-08
+  SCPH ITER    17 :  DIFF =    2.900642e-08
+  SCPH ITER    18 :  DIFF =    2.352728e-08
+  SCPH ITER    19 :  DIFF =    1.910371e-08
+  SCPH ITER    20 :  DIFF =    1.553284e-08
+  SCPH ITER    21 :  DIFF =    1.265065e-08
+  SCPH ITER    22 :  DIFF =    1.032448e-08
+  SCPH ITER    23 :  DIFF =    8.447010e-09
+  SCPH ITER    24 :  DIFF =    6.931395e-09
+  SCPH ITER    25 :  DIFF =    5.707379e-09
+  SCPH ITER    26 :  DIFF =    4.718117e-09
+  SCPH ITER    27 :  DIFF =    3.917646e-09
+  SCPH ITER    28 :  DIFF =    3.268835e-09
+  SCPH ITER    29 :  DIFF =    2.741704e-09
+  SCPH ITER    30 :  DIFF =    2.312115e-09
+  SCPH ITER    31 :  DIFF =    1.960616e-09
+  SCPH ITER    32 :  DIFF =    1.671694e-09
+  SCPH ITER    33 :  DIFF =    1.432876e-09
+  SCPH ITER    34 :  DIFF =    1.234298e-09
+  SCPH ITER    35 :  DIFF =    1.068092e-09
+  SCPH ITER    36 :  DIFF =    9.280578e-10
+  SCPH ITER    37 :  DIFF =    8.093093e-10
+  SCPH ITER    38 :  DIFF =    7.078642e-10
+  SCPH ITER    39 :  DIFF =    6.207910e-10
+  SCPH ITER    40 :  DIFF =    5.455720e-10
+  SCPH ITER    41 :  DIFF =    4.803021e-10
+  SCPH ITER    42 :  DIFF =    4.234415e-10
+  SCPH ITER    43 :  DIFF =    3.737081e-10
+  SCPH ITER    44 :  DIFF =    3.300828e-10
+  SCPH ITER    45 :  DIFF =    2.918233e-10
+  SCPH ITER    46 :  DIFF =    2.580041e-10
+  SCPH ITER    47 :  DIFF =    2.281613e-10
+  SCPH ITER    48 :  DIFF =    2.019566e-10
+  SCPH ITER    49 :  DIFF =    1.788430e-10
+  SCPH ITER    50 :  DIFF =    1.579946e-10
+  SCPH ITER    51 :  DIFF =    1.398060e-10
+  SCPH ITER    52 :  DIFF =    1.236670e-10
+  SCPH ITER    53 :  DIFF =    1.094192e-10
+  SCPH ITER    54 :  DIFF =    9.675765e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 6.000000e+02 : convergence achieved in    54 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    2.110450e-22
+ ik_interpolate =     1 is =     3 omega2 =    5.846619e-22
+ ik_interpolate =     1 is =     4 omega2 =    2.098587e-07
+ ik_interpolate =     1 is =     5 omega2 =    2.098587e-07
+ ik_interpolate =     1 is =     6 omega2 =    2.098587e-07
+ ik_interpolate =     1 is =     7 omega2 =    2.281750e-07
+ ik_interpolate =     1 is =     8 omega2 =    2.281750e-07
+ ik_interpolate =     1 is =     9 omega2 =    2.281750e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.807361e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.807361e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.807361e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.567063e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.567063e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.567063e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.298140e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.298140e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.345979e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.345979e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.317879e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.668770e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.843164e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.843164e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.646382e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.443960e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.443960e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.035053e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.576102e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.576102e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.744359e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.298140e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.298140e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.345979e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.345979e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.317879e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.668770e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.843164e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.843164e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.646382e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.443960e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.443960e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.035053e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.576102e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.576102e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.744359e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    4.858877e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.610876e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.860922e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.860922e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.611609e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.611609e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.748779e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.748779e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.714028e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.925335e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.457622e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.229812e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.578934e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.641278e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.641278e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.298140e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.298140e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.345979e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.345979e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.317879e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.668770e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.843164e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.843164e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.646382e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.443960e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.443960e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.035053e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.576102e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.576102e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.744359e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    4.858877e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.610876e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.860922e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.860922e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.611609e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.611609e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.748779e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.748779e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.714028e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.925335e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.457622e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.229812e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.578934e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.641278e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.641278e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    4.858877e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.610876e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.860922e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.860922e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.611609e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.611609e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.748779e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.748779e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.714028e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.925335e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.457622e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.229812e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.578934e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.641278e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.641278e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    4.445345e-08
+ ik_interpolate =     8 is =     2 omega2 =    4.445345e-08
+ ik_interpolate =     8 is =     3 omega2 =    4.445345e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.714032e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.714032e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.714032e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.576105e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.576105e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.576105e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.439631e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.439631e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.393341e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.666200e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.666200e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.666200e-06
+
+ Temperature = 5.500000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    7.717871e-07
+  SCPH ITER     3 :  DIFF =    6.167449e-07
+  SCPH ITER     4 :  DIFF =    4.941737e-07
+  SCPH ITER     5 :  DIFF =    3.967706e-07
+  SCPH ITER     6 :  DIFF =    3.190636e-07
+  SCPH ITER     7 :  DIFF =    2.568839e-07
+  SCPH ITER     8 :  DIFF =    2.070146e-07
+  SCPH ITER     9 :  DIFF =    1.669484e-07
+  SCPH ITER    10 :  DIFF =    1.347152e-07
+  SCPH ITER    11 :  DIFF =    1.087577e-07
+  SCPH ITER    12 :  DIFF =    8.783864e-08
+  SCPH ITER    13 :  DIFF =    7.097117e-08
+  SCPH ITER    14 :  DIFF =    5.736580e-08
+  SCPH ITER    15 :  DIFF =    4.638933e-08
+  SCPH ITER    16 :  DIFF =    3.753289e-08
+  SCPH ITER    17 :  DIFF =    3.038694e-08
+  SCPH ITER    18 :  DIFF =    2.462143e-08
+  SCPH ITER    19 :  DIFF =    1.997018e-08
+  SCPH ITER    20 :  DIFF =    1.621830e-08
+  SCPH ITER    21 :  DIFF =    1.319227e-08
+  SCPH ITER    22 :  DIFF =    1.075186e-08
+  SCPH ITER    23 :  DIFF =    8.783745e-09
+  SCPH ITER    24 :  DIFF =    7.196315e-09
+  SCPH ITER    25 :  DIFF =    5.915493e-09
+  SCPH ITER    26 :  DIFF =    4.881420e-09
+  SCPH ITER    27 :  DIFF =    4.045679e-09
+  SCPH ITER    28 :  DIFF =    3.369222e-09
+  SCPH ITER    29 :  DIFF =    2.820470e-09
+  SCPH ITER    30 :  DIFF =    2.374043e-09
+  SCPH ITER    31 :  DIFF =    2.009510e-09
+  SCPH ITER    32 :  DIFF =    1.710508e-09
+  SCPH ITER    33 :  DIFF =    1.463935e-09
+  SCPH ITER    34 :  DIFF =    1.259397e-09
+  SCPH ITER    35 :  DIFF =    1.088581e-09
+  SCPH ITER    36 :  DIFF =    9.449769e-10
+  SCPH ITER    37 :  DIFF =    8.234338e-10
+  SCPH ITER    38 :  DIFF =    7.198898e-10
+  SCPH ITER    39 :  DIFF =    6.310758e-10
+  SCPH ITER    40 :  DIFF =    5.545040e-10
+  SCPH ITER    41 :  DIFF =    4.881856e-10
+  SCPH ITER    42 :  DIFF =    4.303940e-10
+  SCPH ITER    43 :  DIFF =    3.799042e-10
+  SCPH ITER    44 :  DIFF =    3.356168e-10
+  SCPH ITER    45 :  DIFF =    2.966907e-10
+  SCPH ITER    46 :  DIFF =    2.624264e-10
+  SCPH ITER    47 :  DIFF =    2.322562e-10
+  SCPH ITER    48 :  DIFF =    2.055392e-10
+  SCPH ITER    49 :  DIFF =    1.818818e-10
+  SCPH ITER    50 :  DIFF =    1.610815e-10
+  SCPH ITER    51 :  DIFF =    1.425371e-10
+  SCPH ITER    52 :  DIFF =    1.261299e-10
+  SCPH ITER    53 :  DIFF =    1.116174e-10
+  SCPH ITER    54 :  DIFF =    9.877264e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 5.500000e+02 : convergence achieved in    54 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    3.146510e-22
+ ik_interpolate =     1 is =     2 omega2 =    6.165474e-22
+ ik_interpolate =     1 is =     3 omega2 =    8.100367e-22
+ ik_interpolate =     1 is =     4 omega2 =    2.049788e-07
+ ik_interpolate =     1 is =     5 omega2 =    2.049788e-07
+ ik_interpolate =     1 is =     6 omega2 =    2.049788e-07
+ ik_interpolate =     1 is =     7 omega2 =    2.198178e-07
+ ik_interpolate =     1 is =     8 omega2 =    2.198178e-07
+ ik_interpolate =     1 is =     9 omega2 =    2.198178e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.754830e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.754830e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.754830e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.555368e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.555368e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.555368e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.269705e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.269705e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.306986e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.306986e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.271541e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.606854e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.770238e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.770238e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.596459e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.402299e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.402299e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.032934e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.564369e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.564369e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.737557e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.269705e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.269705e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.306986e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.306986e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.271541e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.606854e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.770238e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.770238e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.596459e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.402299e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.402299e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.032934e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.564369e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.564369e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.737557e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    4.491290e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.548469e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.814817e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.814817e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.563824e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.563824e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.681474e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.681474e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.699061e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.868476e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.455698e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.227283e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.567586e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.637307e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.637307e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.269705e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.269705e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.306986e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.306986e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.271541e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.606854e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.770238e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.770238e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.596459e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.402299e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.402299e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.032934e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.564369e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.564369e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.737557e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    4.491290e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.548469e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.814817e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.814817e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.563824e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.563824e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.681474e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.681474e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.699061e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.868476e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.455698e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.227283e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.567586e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.637307e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.637307e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    4.491290e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.548469e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.814817e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.814817e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.563824e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.563824e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.681474e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.681474e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.699061e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.868476e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.455698e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.227283e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.567586e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.637307e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.637307e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    4.072689e-08
+ ik_interpolate =     8 is =     2 omega2 =    4.072689e-08
+ ik_interpolate =     8 is =     3 omega2 =    4.072689e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.664497e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.664497e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.664497e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.503330e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.503330e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.503330e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.438091e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.438091e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.389611e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.665065e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.665065e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.665065e-06
+
+ Temperature = 5.000000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    8.362705e-07
+  SCPH ITER     3 :  DIFF =    6.653557e-07
+  SCPH ITER     4 :  DIFF =    5.311837e-07
+  SCPH ITER     5 :  DIFF =    4.251606e-07
+  SCPH ITER     6 :  DIFF =    3.409664e-07
+  SCPH ITER     7 :  DIFF =    2.738561e-07
+  SCPH ITER     8 :  DIFF =    2.202101e-07
+  SCPH ITER     9 :  DIFF =    1.772334e-07
+  SCPH ITER    10 :  DIFF =    1.427466e-07
+  SCPH ITER    11 :  DIFF =    1.150377e-07
+  SCPH ITER    12 :  DIFF =    9.275363e-08
+  SCPH ITER    13 :  DIFF =    7.482006e-08
+  SCPH ITER    14 :  DIFF =    6.038070e-08
+  SCPH ITER    15 :  DIFF =    4.875108e-08
+  SCPH ITER    16 :  DIFF =    3.938274e-08
+  SCPH ITER    17 :  DIFF =    3.183544e-08
+  SCPH ITER    18 :  DIFF =    2.575523e-08
+  SCPH ITER    19 :  DIFF =    2.085728e-08
+  SCPH ITER    20 :  DIFF =    1.691209e-08
+  SCPH ITER    21 :  DIFF =    1.373469e-08
+  SCPH ITER    22 :  DIFF =    1.117588e-08
+  SCPH ITER    23 :  DIFF =    9.115253e-09
+  SCPH ITER    24 :  DIFF =    7.455649e-09
+  SCPH ITER    25 :  DIFF =    6.118619e-09
+  SCPH ITER    26 :  DIFF =    5.040843e-09
+  SCPH ITER    27 :  DIFF =    4.171215e-09
+  SCPH ITER    28 :  DIFF =    3.468501e-09
+  SCPH ITER    29 :  DIFF =    2.899472e-09
+  SCPH ITER    30 :  DIFF =    2.437385e-09
+  SCPH ITER    31 :  DIFF =    2.060767e-09
+  SCPH ITER    32 :  DIFF =    1.752402e-09
+  SCPH ITER    33 :  DIFF =    1.498574e-09
+  SCPH ITER    34 :  DIFF =    1.288368e-09
+  SCPH ITER    35 :  DIFF =    1.113116e-09
+  SCPH ITER    36 :  DIFF =    9.659872e-10
+  SCPH ITER    37 :  DIFF =    8.416056e-10
+  SCPH ITER    38 :  DIFF =    7.357005e-10
+  SCPH ITER    39 :  DIFF =    6.450953e-10
+  SCPH ITER    40 :  DIFF =    5.669065e-10
+  SCPH ITER    41 :  DIFF =    4.990491e-10
+  SCPH ITER    42 :  DIFF =    4.400853e-10
+  SCPH ITER    43 :  DIFF =    3.885974e-10
+  SCPH ITER    44 :  DIFF =    3.433892e-10
+  SCPH ITER    45 :  DIFF =    3.037128e-10
+  SCPH ITER    46 :  DIFF =    2.687234e-10
+  SCPH ITER    47 :  DIFF =    2.378309e-10
+  SCPH ITER    48 :  DIFF =    2.105689e-10
+  SCPH ITER    49 :  DIFF =    1.865621e-10
+  SCPH ITER    50 :  DIFF =    1.652888e-10
+  SCPH ITER    51 :  DIFF =    1.462089e-10
+  SCPH ITER    52 :  DIFF =    1.295535e-10
+  SCPH ITER    53 :  DIFF =    1.146055e-10
+  SCPH ITER    54 :  DIFF =    1.016013e-10
+  SCPH ITER    55 :  DIFF =    8.990365e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 5.000000e+02 : convergence achieved in    55 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    3.689859e-22
+ ik_interpolate =     1 is =     3 omega2 =    2.213900e-21
+ ik_interpolate =     1 is =     4 omega2 =    1.999059e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.999059e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.999059e-07
+ ik_interpolate =     1 is =     7 omega2 =    2.111056e-07
+ ik_interpolate =     1 is =     8 omega2 =    2.111056e-07
+ ik_interpolate =     1 is =     9 omega2 =    2.111056e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.700896e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.700896e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.700896e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.544049e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.544049e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.544049e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.239911e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.239911e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.265744e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.265744e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.223332e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.542783e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.695435e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.695435e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.544749e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.359198e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.359198e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.030986e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.553008e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.553008e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.730942e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.239911e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.239911e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.265744e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.265744e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.223332e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.542783e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.695435e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.695435e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.544749e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.359198e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.359198e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.030986e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.553008e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.553008e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.730942e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    4.106928e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.483848e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.764842e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.764842e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.514154e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.514154e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.613904e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.613904e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.683292e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.809564e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.453969e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.224903e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.556613e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.633585e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.633585e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.239911e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.239911e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.265744e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.265744e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.223332e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.542783e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.695435e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.695435e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.544749e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.359198e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.359198e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.030986e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.553008e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.553008e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.730942e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    4.106928e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.483848e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.764842e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.764842e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.514154e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.514154e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.613904e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.613904e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.683292e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.809564e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.453969e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.224903e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.556613e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.633585e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.633585e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    4.106928e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.483848e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.764842e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.764842e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.514154e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.514154e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.613904e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.613904e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.683292e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.809564e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.453969e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.224903e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.556613e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.633585e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.633585e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    3.682871e-08
+ ik_interpolate =     8 is =     2 omega2 =    3.682871e-08
+ ik_interpolate =     8 is =     3 omega2 =    3.682871e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.611987e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.611987e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.611987e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.429162e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.429162e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.429162e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.436745e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.436745e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.386006e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.664242e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.664242e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.664242e-06
+
+ Temperature = 4.500000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    9.233067e-07
+  SCPH ITER     3 :  DIFF =    7.294539e-07
+  SCPH ITER     4 :  DIFF =    5.789642e-07
+  SCPH ITER     5 :  DIFF =    4.610956e-07
+  SCPH ITER     6 :  DIFF =    3.681702e-07
+  SCPH ITER     7 :  DIFF =    2.945492e-07
+  SCPH ITER     8 :  DIFF =    2.360053e-07
+  SCPH ITER     9 :  DIFF =    1.893191e-07
+  SCPH ITER    10 :  DIFF =    1.520087e-07
+  SCPH ITER    11 :  DIFF =    1.221423e-07
+  SCPH ITER    12 :  DIFF =    9.820536e-08
+  SCPH ITER    13 :  DIFF =    7.900322e-08
+  SCPH ITER    14 :  DIFF =    6.358921e-08
+  SCPH ITER    15 :  DIFF =    5.121043e-08
+  SCPH ITER    16 :  DIFF =    4.126634e-08
+  SCPH ITER    17 :  DIFF =    3.327683e-08
+  SCPH ITER    18 :  DIFF =    2.685737e-08
+  SCPH ITER    19 :  DIFF =    2.169952e-08
+  SCPH ITER    20 :  DIFF =    1.755562e-08
+  SCPH ITER    21 :  DIFF =    1.422665e-08
+  SCPH ITER    22 :  DIFF =    1.155254e-08
+  SCPH ITER    23 :  DIFF =    9.404464e-09
+  SCPH ITER    24 :  DIFF =    7.678753e-09
+  SCPH ITER    25 :  DIFF =    6.291917e-09
+  SCPH ITER    26 :  DIFF =    5.176729e-09
+  SCPH ITER    27 :  DIFF =    4.279055e-09
+  SCPH ITER    28 :  DIFF =    3.555332e-09
+  SCPH ITER    29 :  DIFF =    2.970547e-09
+  SCPH ITER    30 :  DIFF =    2.496581e-09
+  SCPH ITER    31 :  DIFF =    2.110917e-09
+  SCPH ITER    32 :  DIFF =    1.795589e-09
+  SCPH ITER    33 :  DIFF =    1.536287e-09
+  SCPH ITER    34 :  DIFF =    1.321649e-09
+  SCPH ITER    35 :  DIFF =    1.142699e-09
+  SCPH ITER    36 :  DIFF =    9.924456e-10
+  SCPH ITER    37 :  DIFF =    8.653621e-10
+  SCPH ITER    38 :  DIFF =    7.571039e-10
+  SCPH ITER    39 :  DIFF =    6.643311e-10
+  SCPH ITER    40 :  DIFF =    5.842594e-10
+  SCPH ITER    41 :  DIFF =    5.147354e-10
+  SCPH ITER    42 :  DIFF =    4.541840e-10
+  SCPH ITER    43 :  DIFF =    4.012940e-10
+  SCPH ITER    44 :  DIFF =    3.549180e-10
+  SCPH ITER    45 :  DIFF =    3.138867e-10
+  SCPH ITER    46 :  DIFF =    2.778478e-10
+  SCPH ITER    47 :  DIFF =    2.461953e-10
+  SCPH ITER    48 :  DIFF =    2.179148e-10
+  SCPH ITER    49 :  DIFF =    1.930063e-10
+  SCPH ITER    50 :  DIFF =    1.709790e-10
+  SCPH ITER    51 :  DIFF =    1.514473e-10
+  SCPH ITER    52 :  DIFF =    1.341754e-10
+  SCPH ITER    53 :  DIFF =    1.191383e-10
+  SCPH ITER    54 :  DIFF =    1.054811e-10
+  SCPH ITER    55 :  DIFF =    9.318162e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 4.500000e+02 : convergence achieved in    55 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    2.433524e-22
+ ik_interpolate =     1 is =     2 omega2 =    1.649978e-21
+ ik_interpolate =     1 is =     3 omega2 =    2.064852e-21
+ ik_interpolate =     1 is =     4 omega2 =    1.946194e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.946194e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.946194e-07
+ ik_interpolate =     1 is =     7 omega2 =    2.020026e-07
+ ik_interpolate =     1 is =     8 omega2 =    2.020026e-07
+ ik_interpolate =     1 is =     9 omega2 =    2.020026e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.645379e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.645379e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.645379e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.533141e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.533141e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.533141e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.208601e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.208601e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.221940e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.221940e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.173060e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.476330e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.618624e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.618624e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.491048e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.314487e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.314487e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.029218e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.542053e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.542053e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.724533e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.208601e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.208601e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.221940e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.221940e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.173060e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.476330e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.618624e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.618624e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.491048e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.314487e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.314487e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.029218e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.542053e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.542053e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.724533e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    3.704320e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.416772e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.710399e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.710399e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.462395e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.462395e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.546221e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.546221e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.666598e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.748349e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.452448e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.222675e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.546048e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.630128e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.630128e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.208601e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.208601e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.221940e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.221940e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.173060e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.476330e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.618624e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.618624e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.491048e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.314487e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.314487e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.029218e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.542053e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.542053e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.724533e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    3.704320e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.416772e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.710399e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.710399e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.462395e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.462395e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.546221e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.546221e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.666598e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.748349e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.452448e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.222675e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.546048e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.630128e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.630128e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    3.704320e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.416772e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.710399e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.710399e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.462395e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.462395e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.546221e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.546221e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.666598e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.748349e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.452448e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.222675e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.546048e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.630128e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.630128e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    3.274346e-08
+ ik_interpolate =     8 is =     2 omega2 =    3.274346e-08
+ ik_interpolate =     8 is =     3 omega2 =    3.274346e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.556132e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.556132e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.556132e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.353470e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.353470e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.353470e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.435606e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.435606e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.382524e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.663750e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.663750e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.663750e-06
+
+ Temperature = 4.000000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    1.049120e-06
+  SCPH ITER     3 :  DIFF =    8.189767e-07
+  SCPH ITER     4 :  DIFF =    6.436791e-07
+  SCPH ITER     5 :  DIFF =    5.083940e-07
+  SCPH ITER     6 :  DIFF =    4.030023e-07
+  SCPH ITER     7 :  DIFF =    3.203305e-07
+  SCPH ITER     8 :  DIFF =    2.551467e-07
+  SCPH ITER     9 :  DIFF =    2.035525e-07
+  SCPH ITER    10 :  DIFF =    1.625950e-07
+  SCPH ITER    11 :  DIFF =    1.300092e-07
+  SCPH ITER    12 :  DIFF =    1.040407e-07
+  SCPH ITER    13 :  DIFF =    8.331993e-08
+  SCPH ITER    14 :  DIFF =    6.677132e-08
+  SCPH ITER    15 :  DIFF =    5.354630e-08
+  SCPH ITER    16 :  DIFF =    4.297278e-08
+  SCPH ITER    17 :  DIFF =    3.451692e-08
+  SCPH ITER    18 :  DIFF =    2.775367e-08
+  SCPH ITER    19 :  DIFF =    2.234403e-08
+  SCPH ITER    20 :  DIFF =    1.801720e-08
+  SCPH ITER    21 :  DIFF =    1.455661e-08
+  SCPH ITER    22 :  DIFF =    1.178894e-08
+  SCPH ITER    23 :  DIFF =    9.575334e-09
+  SCPH ITER    24 :  DIFF =    7.804517e-09
+  SCPH ITER    25 :  DIFF =    6.387284e-09
+  SCPH ITER    26 :  DIFF =    5.252104e-09
+  SCPH ITER    27 :  DIFF =    4.341629e-09
+  SCPH ITER    28 :  DIFF =    3.609916e-09
+  SCPH ITER    29 :  DIFF =    3.020202e-09
+  SCPH ITER    30 :  DIFF =    2.543121e-09
+  SCPH ITER    31 :  DIFF =    2.155319e-09
+  SCPH ITER    32 :  DIFF =    1.838235e-09
+  SCPH ITER    33 :  DIFF =    1.577250e-09
+  SCPH ITER    34 :  DIFF =    1.360806e-09
+  SCPH ITER    35 :  DIFF =    1.179911e-09
+  SCPH ITER    36 :  DIFF =    1.027524e-09
+  SCPH ITER    37 :  DIFF =    8.981609e-10
+  SCPH ITER    38 :  DIFF =    7.875297e-10
+  SCPH ITER    39 :  DIFF =    6.923087e-10
+  SCPH ITER    40 :  DIFF =    6.098420e-10
+  SCPH ITER    41 :  DIFF =    5.380602e-10
+  SCPH ITER    42 :  DIFF =    4.753589e-10
+  SCPH ITER    43 :  DIFF =    4.203995e-10
+  SCPH ITER    44 :  DIFF =    3.719627e-10
+  SCPH ITER    45 :  DIFF =    3.293248e-10
+  SCPH ITER    46 :  DIFF =    2.917715e-10
+  SCPH ITER    47 :  DIFF =    2.583571e-10
+  SCPH ITER    48 :  DIFF =    2.288917e-10
+  SCPH ITER    49 :  DIFF =    2.028603e-10
+  SCPH ITER    50 :  DIFF =    1.796635e-10
+  SCPH ITER    51 :  DIFF =    1.592508e-10
+  SCPH ITER    52 :  DIFF =    1.411084e-10
+  SCPH ITER    53 :  DIFF =    1.248932e-10
+  SCPH ITER    54 :  DIFF =    1.106418e-10
+  SCPH ITER    55 :  DIFF =    9.812973e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 4.000000e+02 : convergence achieved in    55 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     3 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     4 omega2 =    1.890977e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.890977e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.890977e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.924705e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.924705e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.924705e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.588080e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.588080e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.588080e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.522661e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.522661e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.522661e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.175212e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.175212e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.175600e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.175600e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.120526e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.407244e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.539687e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.539687e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.435128e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.267967e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.267967e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.027627e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.531521e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.531521e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.718335e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.175212e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.175212e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.175600e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.175600e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.120526e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.407244e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.539687e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.539687e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.435128e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.267967e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.267967e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.027627e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.531521e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.531521e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.718335e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    3.282154e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.346976e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.650821e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.650821e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.408321e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.408321e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.478606e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.478606e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.648816e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.684538e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.451144e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.220587e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.535911e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.626943e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.626943e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.175212e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.175212e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.175600e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.175600e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.120526e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.407244e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.539687e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.539687e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.435128e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.267967e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.267967e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.027627e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.531521e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.531521e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.718335e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    3.282154e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.346976e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.650821e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.650821e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.408321e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.408321e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.478606e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.478606e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.648816e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.684538e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.451144e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.220587e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.535911e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.626943e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.626943e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    3.282154e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.346976e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.650821e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.650821e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.408321e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.408321e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.478606e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.478606e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.648816e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.684538e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.451144e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.220587e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.535911e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.626943e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.626943e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    2.845700e-08
+ ik_interpolate =     8 is =     2 omega2 =    2.845700e-08
+ ik_interpolate =     8 is =     3 omega2 =    2.845700e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.496508e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.496508e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.496508e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.276105e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.276105e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.276105e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.434681e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.434681e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.379146e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.663593e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.663593e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.663593e-06
+
+ Temperature = 3.500000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    1.250301e-06
+  SCPH ITER     3 :  DIFF =    9.542945e-07
+  SCPH ITER     4 :  DIFF =    7.368364e-07
+  SCPH ITER     5 :  DIFF =    5.734739e-07
+  SCPH ITER     6 :  DIFF =    4.488692e-07
+  SCPH ITER     7 :  DIFF =    3.528003e-07
+  SCPH ITER     8 :  DIFF =    2.781536e-07
+  SCPH ITER     9 :  DIFF =    2.198184e-07
+  SCPH ITER    10 :  DIFF =    1.740354e-07
+  SCPH ITER    11 :  DIFF =    1.379886e-07
+  SCPH ITER    12 :  DIFF =    1.095395e-07
+  SCPH ITER    13 :  DIFF =    8.704673e-08
+  SCPH ITER    14 :  DIFF =    6.924011e-08
+  SCPH ITER    15 :  DIFF =    5.513017e-08
+  SCPH ITER    16 :  DIFF =    4.394232e-08
+  SCPH ITER    17 :  DIFF =    3.506777e-08
+  SCPH ITER    18 :  DIFF =    2.802656e-08
+  SCPH ITER    19 :  DIFF =    2.243936e-08
+  SCPH ITER    20 :  DIFF =    1.800576e-08
+  SCPH ITER    21 :  DIFF =    1.448755e-08
+  SCPH ITER    22 :  DIFF =    1.169553e-08
+  SCPH ITER    23 :  DIFF =    9.479340e-09
+  SCPH ITER    24 :  DIFF =    7.719363e-09
+  SCPH ITER    25 :  DIFF =    6.320405e-09
+  SCPH ITER    26 :  DIFF =    5.206721e-09
+  SCPH ITER    27 :  DIFF =    4.318044e-09
+  SCPH ITER    28 :  DIFF =    3.606545e-09
+  SCPH ITER    29 :  DIFF =    3.034318e-09
+  SCPH ITER    30 :  DIFF =    2.571439e-09
+  SCPH ITER    31 :  DIFF =    2.194410e-09
+  SCPH ITER    32 :  DIFF =    1.884839e-09
+  SCPH ITER    33 :  DIFF =    1.628464e-09
+  SCPH ITER    34 :  DIFF =    1.414221e-09
+  SCPH ITER    35 :  DIFF =    1.233581e-09
+  SCPH ITER    36 :  DIFF =    1.079991e-09
+  SCPH ITER    37 :  DIFF =    9.483567e-10
+  SCPH ITER    38 :  DIFF =    8.347731e-10
+  SCPH ITER    39 :  DIFF =    7.361788e-10
+  SCPH ITER    40 :  DIFF =    6.502251e-10
+  SCPH ITER    41 :  DIFF =    5.748476e-10
+  SCPH ITER    42 :  DIFF =    5.086791e-10
+  SCPH ITER    43 :  DIFF =    4.503426e-10
+  SCPH ITER    44 :  DIFF =    3.988674e-10
+  SCPH ITER    45 :  DIFF =    3.533653e-10
+  SCPH ITER    46 :  DIFF =    3.131217e-10
+  SCPH ITER    47 :  DIFF =    2.774358e-10
+  SCPH ITER    48 :  DIFF =    2.458308e-10
+  SCPH ITER    49 :  DIFF =    2.178650e-10
+  SCPH ITER    50 :  DIFF =    1.930916e-10
+  SCPH ITER    51 :  DIFF =    1.709959e-10
+  SCPH ITER    52 :  DIFF =    1.515565e-10
+  SCPH ITER    53 :  DIFF =    1.342127e-10
+  SCPH ITER    54 :  DIFF =    1.188879e-10
+  SCPH ITER    55 :  DIFF =    1.052133e-10
+  SCPH ITER    56 :  DIFF =    9.337049e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 3.500000e+02 : convergence achieved in    56 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    1.958160e-22
+ ik_interpolate =     1 is =     3 omega2 =    5.072297e-22
+ ik_interpolate =     1 is =     4 omega2 =    1.824711e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.824711e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.824711e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.833199e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.833199e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.833199e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.528785e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.528785e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.528785e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.512585e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.512585e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.512585e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.125149e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.125149e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.140726e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.140726e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.065550e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.335272e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.458554e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.458554e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.376740e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.219414e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.219414e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.026184e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.521391e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.521391e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.712335e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.125149e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.125149e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.140726e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.140726e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.065550e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.335272e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.458554e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.458554e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.376740e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.219414e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.219414e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.026184e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.521391e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.521391e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.712335e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    2.839770e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.274191e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.585400e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.585400e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.351708e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.351708e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.411274e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.411274e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.629729e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.617784e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.450045e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.218595e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.526178e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.624006e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.624006e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.125149e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.125149e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.140726e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.140726e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.065550e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.335272e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.458554e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.458554e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.376740e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.219414e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.219414e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.026184e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.521391e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.521391e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.712335e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    2.839770e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.274191e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.585400e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.585400e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.351708e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.351708e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.411274e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.411274e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.629729e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.617784e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.450045e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.218595e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.526178e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.624006e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.624006e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    2.839770e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.274191e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.585400e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.585400e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.351708e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.351708e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.411274e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.411274e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.629729e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.617784e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.450045e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.218595e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.526178e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.624006e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.624006e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    2.396136e-08
+ ik_interpolate =     8 is =     2 omega2 =    2.396136e-08
+ ik_interpolate =     8 is =     3 omega2 =    2.396136e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.432645e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.432645e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.432645e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.196904e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.196904e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.196904e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.433957e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.433957e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.375819e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.663740e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.663740e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.663740e-06
+
+ Temperature = 3.000000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    1.628518e-06
+  SCPH ITER     3 :  DIFF =    1.182280e-06
+  SCPH ITER     4 :  DIFF =    8.803092e-07
+  SCPH ITER     5 :  DIFF =    6.658022e-07
+  SCPH ITER     6 :  DIFF =    5.088249e-07
+  SCPH ITER     7 :  DIFF =    3.916808e-07
+  SCPH ITER     8 :  DIFF =    3.030802e-07
+  SCPH ITER     9 :  DIFF =    2.354278e-07
+  SCPH ITER    10 :  DIFF =    1.834152e-07
+  SCPH ITER    11 :  DIFF =    1.432262e-07
+  SCPH ITER    12 :  DIFF =    1.120589e-07
+  SCPH ITER    13 :  DIFF =    8.782361e-08
+  SCPH ITER    14 :  DIFF =    6.894219e-08
+  SCPH ITER    15 :  DIFF =    5.421205e-08
+  SCPH ITER    16 :  DIFF =    4.271005e-08
+  SCPH ITER    17 :  DIFF =    3.372360e-08
+  SCPH ITER    18 :  DIFF =    2.670022e-08
+  SCPH ITER    19 :  DIFF =    2.121009e-08
+  SCPH ITER    20 :  DIFF =    1.691790e-08
+  SCPH ITER    21 :  DIFF =    1.356145e-08
+  SCPH ITER    22 :  DIFF =    1.093538e-08
+  SCPH ITER    23 :  DIFF =    8.878628e-09
+  SCPH ITER    24 :  DIFF =    7.264787e-09
+  SCPH ITER    25 :  DIFF =    5.994707e-09
+  SCPH ITER    26 :  DIFF =    4.990752e-09
+  SCPH ITER    27 :  DIFF =    4.192335e-09
+  SCPH ITER    28 :  DIFF =    3.552427e-09
+  SCPH ITER    29 :  DIFF =    3.034757e-09
+  SCPH ITER    30 :  DIFF =    2.611556e-09
+  SCPH ITER    31 :  DIFF =    2.261712e-09
+  SCPH ITER    32 :  DIFF =    1.969263e-09
+  SCPH ITER    33 :  DIFF =    1.722189e-09
+  SCPH ITER    34 :  DIFF =    1.511435e-09
+  SCPH ITER    35 :  DIFF =    1.330079e-09
+  SCPH ITER    36 :  DIFF =    1.172963e-09
+  SCPH ITER    37 :  DIFF =    1.036030e-09
+  SCPH ITER    38 :  DIFF =    9.161267e-10
+  SCPH ITER    39 :  DIFF =    8.107697e-10
+  SCPH ITER    40 :  DIFF =    7.179055e-10
+  SCPH ITER    41 :  DIFF =    6.359182e-10
+  SCPH ITER    42 :  DIFF =    5.634151e-10
+  SCPH ITER    43 :  DIFF =    4.992936e-10
+  SCPH ITER    44 :  DIFF =    4.424092e-10
+  SCPH ITER    45 :  DIFF =    3.919754e-10
+  SCPH ITER    46 :  DIFF =    3.473747e-10
+  SCPH ITER    47 :  DIFF =    3.076928e-10
+  SCPH ITER    48 :  DIFF =    2.725692e-10
+  SCPH ITER    49 :  DIFF =    2.414802e-10
+  SCPH ITER    50 :  DIFF =    2.139435e-10
+  SCPH ITER    51 :  DIFF =    1.893805e-10
+  SCPH ITER    52 :  DIFF =    1.676713e-10
+  SCPH ITER    53 :  DIFF =    1.485446e-10
+  SCPH ITER    54 :  DIFF =    1.314569e-10
+  SCPH ITER    55 :  DIFF =    1.163528e-10
+  SCPH ITER    56 :  DIFF =    1.029950e-10
+  SCPH ITER    57 :  DIFF =    9.120287e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 3.000000e+02 : convergence achieved in    57 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     3 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     4 omega2 =    1.719773e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.719773e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.719773e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.772731e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.772731e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.772731e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.467304e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.467304e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.467304e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.502778e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.502778e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.502778e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.071326e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.071326e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.103821e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.103821e-07
+ ik_interpolate =     2 is =     5 omega2 =    2.008055e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.260223e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.375290e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.375290e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.315652e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.168587e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.168587e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.024800e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.511530e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.511530e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.706458e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.071326e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.071326e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.103821e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.103821e-07
+ ik_interpolate =     3 is =     5 omega2 =    2.008055e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.260223e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.375290e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.375290e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.315652e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.168587e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.168587e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.024800e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.511530e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.511530e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.706458e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    2.378372e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.198197e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.513468e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.513468e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.292383e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.292383e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.344518e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.344518e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.609038e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.547702e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.449090e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.216582e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.516718e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.621217e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.621217e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.071326e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.071326e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.103821e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.103821e-07
+ ik_interpolate =     5 is =     5 omega2 =    2.008055e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.260223e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.375290e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.375290e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.315652e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.168587e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.168587e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.024800e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.511530e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.511530e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.706458e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    2.378372e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.198197e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.513468e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.513468e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.292383e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.292383e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.344518e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.344518e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.609038e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.547702e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.449090e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.216582e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.516718e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.621217e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.621217e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    2.378372e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.198197e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.513468e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.513468e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.292383e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.292383e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.344518e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.344518e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.609038e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.547702e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.449090e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.216582e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.516718e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.621217e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.621217e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    1.926672e-08
+ ik_interpolate =     8 is =     2 omega2 =    1.926672e-08
+ ik_interpolate =     8 is =     3 omega2 =    1.926672e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.364077e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.364077e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.364077e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.115705e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.115705e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.115705e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.433368e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.433368e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.372409e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.664067e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.664067e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.664067e-06
+
+ Temperature = 2.500000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    2.590954e-06
+  SCPH ITER     3 :  DIFF =    1.611079e-06
+  SCPH ITER     4 :  DIFF =    1.098095e-06
+  SCPH ITER     5 :  DIFF =    7.804126e-07
+  SCPH ITER     6 :  DIFF =    5.678855e-07
+  SCPH ITER     7 :  DIFF =    4.194101e-07
+  SCPH ITER     8 :  DIFF =    3.128597e-07
+  SCPH ITER     9 :  DIFF =    2.350370e-07
+  SCPH ITER    10 :  DIFF =    1.775126e-07
+  SCPH ITER    11 :  DIFF =    1.346390e-07
+  SCPH ITER    12 :  DIFF =    1.025008e-07
+  SCPH ITER    13 :  DIFF =    7.831466e-08
+  SCPH ITER    14 :  DIFF =    6.006508e-08
+  SCPH ITER    15 :  DIFF =    4.627195e-08
+  SCPH ITER    16 :  DIFF =    3.583680e-08
+  SCPH ITER    17 :  DIFF =    2.793761e-08
+  SCPH ITER    18 :  DIFF =    2.195512e-08
+  SCPH ITER    19 :  DIFF =    1.742041e-08
+  SCPH ITER    20 :  DIFF =    1.397697e-08
+  SCPH ITER    21 :  DIFF =    1.135323e-08
+  SCPH ITER    22 :  DIFF =    9.342439e-09
+  SCPH ITER    23 :  DIFF =    7.787925e-09
+  SCPH ITER    24 :  DIFF =    6.571883e-09
+  SCPH ITER    25 :  DIFF =    5.606757e-09
+  SCPH ITER    26 :  DIFF =    4.828236e-09
+  SCPH ITER    27 :  DIFF =    4.189645e-09
+  SCPH ITER    28 :  DIFF =    3.657416e-09
+  SCPH ITER    29 :  DIFF =    3.207415e-09
+  SCPH ITER    30 :  DIFF =    2.822318e-09
+  SCPH ITER    31 :  DIFF =    2.489506e-09
+  SCPH ITER    32 :  DIFF =    2.199693e-09
+  SCPH ITER    33 :  DIFF =    1.945883e-09
+  SCPH ITER    34 :  DIFF =    1.722667e-09
+  SCPH ITER    35 :  DIFF =    1.525788e-09
+  SCPH ITER    36 :  DIFF =    1.351771e-09
+  SCPH ITER    37 :  DIFF =    1.197750e-09
+  SCPH ITER    38 :  DIFF =    1.061324e-09
+  SCPH ITER    39 :  DIFF =    9.404064e-10
+  SCPH ITER    40 :  DIFF =    8.332378e-10
+  SCPH ITER    41 :  DIFF =    7.382131e-10
+  SCPH ITER    42 :  DIFF =    6.539219e-10
+  SCPH ITER    43 :  DIFF =    5.792460e-10
+  SCPH ITER    44 :  DIFF =    5.130258e-10
+  SCPH ITER    45 :  DIFF =    4.542912e-10
+  SCPH ITER    46 :  DIFF =    4.022716e-10
+  SCPH ITER    47 :  DIFF =    3.561941e-10
+  SCPH ITER    48 :  DIFF =    3.153582e-10
+  SCPH ITER    49 :  DIFF =    2.792172e-10
+  SCPH ITER    50 :  DIFF =    2.472411e-10
+  SCPH ITER    51 :  DIFF =    2.187898e-10
+  SCPH ITER    52 :  DIFF =    1.937478e-10
+  SCPH ITER    53 :  DIFF =    1.714575e-10
+  SCPH ITER    54 :  DIFF =    1.517245e-10
+  SCPH ITER    55 :  DIFF =    1.342800e-10
+  SCPH ITER    56 :  DIFF =    1.189075e-10
+  SCPH ITER    57 :  DIFF =    1.052395e-10
+  SCPH ITER    58 :  DIFF =    9.315898e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 2.500000e+02 : convergence achieved in    58 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     3 omega2 =    1.117806e-22
+ ik_interpolate =     1 is =     4 omega2 =    1.610022e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.610022e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.610022e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.709712e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.709712e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.709712e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.403564e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.403564e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.403564e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.492846e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.492846e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.492846e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    1.013439e-07
+ ik_interpolate =     2 is =     2 omega2 =    1.013439e-07
+ ik_interpolate =     2 is =     3 omega2 =    1.064854e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.064854e-07
+ ik_interpolate =     2 is =     5 omega2 =    1.948269e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.182139e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.290315e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.290315e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.251750e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.115294e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.115294e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.023242e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.501551e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.501551e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.700488e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    1.013439e-07
+ ik_interpolate =     3 is =     2 omega2 =    1.013439e-07
+ ik_interpolate =     3 is =     3 omega2 =    1.064854e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.064854e-07
+ ik_interpolate =     3 is =     5 omega2 =    1.948269e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.182139e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.290315e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.290315e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.251750e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.115294e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.115294e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.023242e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.501551e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.501551e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.700488e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    1.903963e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.119002e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.434629e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.434629e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.230388e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.230388e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.278809e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.278809e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.586304e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.473914e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.448100e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.214267e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.507147e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.618305e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.618305e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    1.013439e-07
+ ik_interpolate =     5 is =     2 omega2 =    1.013439e-07
+ ik_interpolate =     5 is =     3 omega2 =    1.064854e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.064854e-07
+ ik_interpolate =     5 is =     5 omega2 =    1.948269e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.182139e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.290315e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.290315e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.251750e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.115294e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.115294e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.023242e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.501551e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.501551e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.700488e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    1.903963e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.119002e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.434629e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.434629e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.230388e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.230388e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.278809e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.278809e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.586304e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.473914e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.448100e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.214267e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.507147e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.618305e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.618305e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    1.903963e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.119002e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.434629e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.434629e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.230388e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.230388e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.278809e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.278809e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.586304e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.473914e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.448100e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.214267e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.507147e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.618305e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.618305e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    1.443083e-08
+ ik_interpolate =     8 is =     2 omega2 =    1.443083e-08
+ ik_interpolate =     8 is =     3 omega2 =    1.443083e-08
+ ik_interpolate =     8 is =     4 omega2 =    1.290501e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.290501e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.290501e-07
+ ik_interpolate =     8 is =     7 omega2 =    4.032413e-07
+ ik_interpolate =     8 is =     8 omega2 =    4.032413e-07
+ ik_interpolate =     8 is =     9 omega2 =    4.032413e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.432729e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.432729e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.368602e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.664246e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.664246e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.664246e-06
+
+ Temperature = 2.000000e+02 K
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    8.436488e-06
+  SCPH ITER     3 :  DIFF =    1.379960e-06
+  SCPH ITER     4 :  DIFF =    8.447580e-07
+  SCPH ITER     5 :  DIFF =    5.532821e-07
+  SCPH ITER     6 :  DIFF =    3.752403e-07
+  SCPH ITER     7 :  DIFF =    2.600989e-07
+  SCPH ITER     8 :  DIFF =    1.832088e-07
+  SCPH ITER     9 :  DIFF =    1.308894e-07
+  SCPH ITER    10 :  DIFF =    9.490129e-08
+  SCPH ITER    11 :  DIFF =    6.999981e-08
+  SCPH ITER    12 :  DIFF =    5.271090e-08
+  SCPH ITER    13 :  DIFF =    4.066460e-08
+  SCPH ITER    14 :  DIFF =    3.221187e-08
+  SCPH ITER    15 :  DIFF =    2.619712e-08
+  SCPH ITER    16 :  DIFF =    2.181750e-08
+  SCPH ITER    17 :  DIFF =    1.852755e-08
+  SCPH ITER    18 :  DIFF =    1.596720e-08
+  SCPH ITER    19 :  DIFF =    1.390486e-08
+  SCPH ITER    20 :  DIFF =    1.219394e-08
+  SCPH ITER    21 :  DIFF =    1.074181e-08
+  SCPH ITER    22 :  DIFF =    9.489059e-09
+  SCPH ITER    23 :  DIFF =    8.396371e-09
+  SCPH ITER    24 :  DIFF =    7.436529e-09
+  SCPH ITER    25 :  DIFF =    6.589701e-09
+  SCPH ITER    26 :  DIFF =    5.840651e-09
+  SCPH ITER    27 :  DIFF =    5.177124e-09
+  SCPH ITER    28 :  DIFF =    4.588921e-09
+  SCPH ITER    29 :  DIFF =    4.067314e-09
+  SCPH ITER    30 :  DIFF =    3.604724e-09
+  SCPH ITER    31 :  DIFF =    3.194498e-09
+  SCPH ITER    32 :  DIFF =    2.830729e-09
+  SCPH ITER    33 :  DIFF =    2.508215e-09
+  SCPH ITER    34 :  DIFF =    2.222314e-09
+  SCPH ITER    35 :  DIFF =    1.968903e-09
+  SCPH ITER    36 :  DIFF =    1.744315e-09
+  SCPH ITER    37 :  DIFF =    1.545292e-09
+  SCPH ITER    38 :  DIFF =    1.368939e-09
+  SCPH ITER    39 :  DIFF =    1.212689e-09
+  SCPH ITER    40 :  DIFF =    1.074257e-09
+  SCPH ITER    41 :  DIFF =    9.516220e-10
+  SCPH ITER    42 :  DIFF =    8.429471e-10
+  SCPH ITER    43 :  DIFF =    7.467402e-10
+  SCPH ITER    44 :  DIFF =    6.614606e-10
+  SCPH ITER    45 :  DIFF =    5.859322e-10
+  SCPH ITER    46 :  DIFF =    5.190398e-10
+  SCPH ITER    47 :  DIFF =    4.597452e-10
+  SCPH ITER    48 :  DIFF =    4.072578e-10
+  SCPH ITER    49 :  DIFF =    3.607430e-10
+  SCPH ITER    50 :  DIFF =    3.196912e-10
+  SCPH ITER    51 :  DIFF =    2.830692e-10
+  SCPH ITER    52 :  DIFF =    2.509351e-10
+  SCPH ITER    53 :  DIFF =    2.221424e-10
+  SCPH ITER    54 :  DIFF =    1.967897e-10
+  SCPH ITER    55 :  DIFF =    1.743108e-10
+  SCPH ITER    56 :  DIFF =    1.544240e-10
+  SCPH ITER    57 :  DIFF =    1.370475e-10
+  SCPH ITER    58 :  DIFF =    1.212889e-10
+  SCPH ITER    59 :  DIFF =    1.074472e-10
+  SCPH ITER    60 :  DIFF =    9.543202e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 2.000000e+02 : convergence achieved in    60 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    6.810163e-22
+ ik_interpolate =     1 is =     3 omega2 =    1.636298e-21
+ ik_interpolate =     1 is =     4 omega2 =    1.496729e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.496729e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.496729e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.645016e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.645016e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.645016e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.337871e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.337871e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.337871e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.481800e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.481800e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.481800e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    9.516620e-08
+ ik_interpolate =     2 is =     2 omega2 =    9.516620e-08
+ ik_interpolate =     2 is =     3 omega2 =    1.024179e-07
+ ik_interpolate =     2 is =     4 omega2 =    1.024179e-07
+ ik_interpolate =     2 is =     5 omega2 =    1.887227e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.101739e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.204902e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.204902e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.185328e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.059542e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.059542e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.020961e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.490484e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.490484e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.693893e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    9.516620e-08
+ ik_interpolate =     3 is =     2 omega2 =    9.516620e-08
+ ik_interpolate =     3 is =     3 omega2 =    1.024179e-07
+ ik_interpolate =     3 is =     4 omega2 =    1.024179e-07
+ ik_interpolate =     3 is =     5 omega2 =    1.887227e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.101739e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.204902e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.204902e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.185328e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.059542e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.059542e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.020961e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.490484e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.490484e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.693893e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    1.434038e-08
+ ik_interpolate =     4 is =     2 omega2 =    1.037275e-07
+ ik_interpolate =     4 is =     3 omega2 =    1.349341e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.349341e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.166365e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.166365e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.215072e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.215072e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.560864e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.396236e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.446628e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.211003e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.496495e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.614601e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.614601e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    9.516620e-08
+ ik_interpolate =     5 is =     2 omega2 =    9.516620e-08
+ ik_interpolate =     5 is =     3 omega2 =    1.024179e-07
+ ik_interpolate =     5 is =     4 omega2 =    1.024179e-07
+ ik_interpolate =     5 is =     5 omega2 =    1.887227e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.101739e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.204902e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.204902e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.185328e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.059542e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.059542e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.020961e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.490484e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.490484e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.693893e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    1.434038e-08
+ ik_interpolate =     6 is =     2 omega2 =    1.037275e-07
+ ik_interpolate =     6 is =     3 omega2 =    1.349341e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.349341e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.166365e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.166365e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.215072e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.215072e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.560864e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.396236e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.446628e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.211003e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.496495e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.614601e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.614601e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    1.434038e-08
+ ik_interpolate =     7 is =     2 omega2 =    1.037275e-07
+ ik_interpolate =     7 is =     3 omega2 =    1.349341e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.349341e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.166365e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.166365e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.215072e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.215072e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.560864e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.396236e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.446628e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.211003e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.496495e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.614601e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.614601e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    9.627759e-09
+ ik_interpolate =     8 is =     2 omega2 =    9.627759e-09
+ ik_interpolate =     8 is =     3 omega2 =    9.627759e-09
+ ik_interpolate =     8 is =     4 omega2 =    1.212221e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.212221e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.212221e-07
+ ik_interpolate =     8 is =     7 omega2 =    3.947153e-07
+ ik_interpolate =     8 is =     8 omega2 =    3.947153e-07
+ ik_interpolate =     8 is =     9 omega2 =    3.947153e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.431581e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.431581e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.363689e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.663474e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.663474e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.663474e-06
+
+ Temperature = 1.500000e+02 K
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     1 :  DIFF = N/A
+  SCPH ITER     2 :  DIFF =    6.256068e-05
+  SCPH ITER     3 :  DIFF =    7.100428e-06
+  SCPH ITER     4 :  DIFF =    6.379749e-06
+  SCPH ITER     5 :  DIFF =    5.721099e-06
+  SCPH ITER     6 :  DIFF =    5.116367e-06
+  SCPH ITER     7 :  DIFF =    4.557622e-06
+  SCPH ITER     8 :  DIFF =    4.036858e-06
+  SCPH ITER     9 :  DIFF =    3.545906e-06
+  SCPH ITER    10 :  DIFF =    3.076750e-06
+  SCPH ITER    11 :  DIFF =    2.622523e-06
+  SCPH ITER    12 :  DIFF =    2.179522e-06
+  SCPH ITER    13 :  DIFF =    1.750073e-06
+  SCPH ITER    14 :  DIFF =    1.344887e-06
+  SCPH ITER    15 :  DIFF =    9.819984e-07
+  SCPH ITER    16 :  DIFF =    6.802323e-07
+  SCPH ITER    17 :  DIFF =    4.501358e-07
+  SCPH ITER    18 :  DIFF =    2.893884e-07
+  SCPH ITER    19 :  DIFF =    1.857930e-07
+  SCPH ITER    20 :  DIFF =    1.236662e-07
+  SCPH ITER    21 :  DIFF =    8.848500e-08
+  SCPH ITER    22 :  DIFF =    6.886827e-08
+  SCPH ITER    23 :  DIFF =    5.722195e-08
+  SCPH ITER    24 :  DIFF =    4.936344e-08
+  SCPH ITER    25 :  DIFF =    4.334565e-08
+  SCPH ITER    26 :  DIFF =    3.834551e-08
+  SCPH ITER    27 :  DIFF =    3.401915e-08
+  SCPH ITER    28 :  DIFF =    3.021069e-08
+  SCPH ITER    29 :  DIFF =    2.683602e-08
+  SCPH ITER    30 :  DIFF =    2.383919e-08
+  SCPH ITER    31 :  DIFF =    2.117649e-08
+  SCPH ITER    32 :  DIFF =    1.881071e-08
+  SCPH ITER    33 :  DIFF =    1.670912e-08
+  SCPH ITER    34 :  DIFF =    1.484252e-08
+  SCPH ITER    35 :  DIFF =    1.318484e-08
+  SCPH ITER    36 :  DIFF =    1.171281e-08
+  SCPH ITER    37 :  DIFF =    1.040567e-08
+  SCPH ITER    38 :  DIFF =    9.244981e-09
+  SCPH ITER    39 :  DIFF =    8.214311e-09
+  SCPH ITER    40 :  DIFF =    7.299069e-09
+  SCPH ITER    41 :  DIFF =    6.486295e-09
+  SCPH ITER    42 :  DIFF =    5.764483e-09
+  SCPH ITER    43 :  DIFF =    5.123413e-09
+  SCPH ITER    44 :  DIFF =    4.554028e-09
+  SCPH ITER    45 :  DIFF =    4.048264e-09
+  SCPH ITER    46 :  DIFF =    3.598995e-09
+  SCPH ITER    47 :  DIFF =    3.199883e-09
+  SCPH ITER    48 :  DIFF =    2.845287e-09
+  SCPH ITER    49 :  DIFF =    2.530222e-09
+  SCPH ITER    50 :  DIFF =    2.250281e-09
+  SCPH ITER    51 :  DIFF =    2.001508e-09
+  SCPH ITER    52 :  DIFF =    1.780401e-09
+  SCPH ITER    53 :  DIFF =    1.583888e-09
+  SCPH ITER    54 :  DIFF =    1.409223e-09
+  SCPH ITER    55 :  DIFF =    1.253944e-09
+  SCPH ITER    56 :  DIFF =    1.115903e-09
+  SCPH ITER    57 :  DIFF =    9.931646e-10
+  SCPH ITER    58 :  DIFF =    8.840389e-10
+  SCPH ITER    59 :  DIFF =    7.870120e-10
+  SCPH ITER    60 :  DIFF =    7.006537e-10
+  SCPH ITER    61 :  DIFF =    6.238944e-10
+  SCPH ITER    62 :  DIFF =    5.555524e-10
+  SCPH ITER    63 :  DIFF =    4.948400e-10
+  SCPH ITER    64 :  DIFF =    4.407805e-10
+  SCPH ITER    65 :  DIFF =    3.926442e-10
+  SCPH ITER    66 :  DIFF =    3.498014e-10
+  SCPH ITER    67 :  DIFF =    3.116980e-10
+  SCPH ITER    68 :  DIFF =    2.777810e-10
+  SCPH ITER    69 :  DIFF =    2.475691e-10
+  SCPH ITER    70 :  DIFF =    2.206886e-10
+  SCPH ITER    71 :  DIFF =    1.968371e-10
+  SCPH ITER    72 :  DIFF =    1.756302e-10
+  SCPH ITER    73 :  DIFF =    1.565315e-10
+  SCPH ITER    74 :  DIFF =    1.394992e-10
+  SCPH ITER    75 :  DIFF =    1.244501e-10
+  SCPH ITER    76 :  DIFF =    1.110170e-10
+  SCPH ITER    77 :  DIFF =    9.905124e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 1.500000e+02 : convergence achieved in    77 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    2.153323e-22
+ ik_interpolate =     1 is =     3 omega2 =    2.789107e-22
+ ik_interpolate =     1 is =     4 omega2 =    1.383798e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.383798e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.383798e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.581157e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.581157e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.581157e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.271364e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.271364e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.271364e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.467575e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.467575e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.467575e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    8.874865e-08
+ ik_interpolate =     2 is =     2 omega2 =    8.874865e-08
+ ik_interpolate =     2 is =     3 omega2 =    9.830664e-08
+ ik_interpolate =     2 is =     4 omega2 =    9.830664e-08
+ ik_interpolate =     2 is =     5 omega2 =    1.827701e-07
+ ik_interpolate =     2 is =     6 omega2 =    2.021322e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.122044e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.122044e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.117687e-07
+ ik_interpolate =     2 is =    10 omega2 =    4.001876e-07
+ ik_interpolate =     2 is =    11 omega2 =    4.001876e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.016815e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.476299e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.476299e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.685567e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    8.874865e-08
+ ik_interpolate =     3 is =     2 omega2 =    8.874865e-08
+ ik_interpolate =     3 is =     3 omega2 =    9.830664e-08
+ ik_interpolate =     3 is =     4 omega2 =    9.830664e-08
+ ik_interpolate =     3 is =     5 omega2 =    1.827701e-07
+ ik_interpolate =     3 is =     6 omega2 =    2.021322e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.122044e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.122044e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.117687e-07
+ ik_interpolate =     3 is =    10 omega2 =    4.001876e-07
+ ik_interpolate =     3 is =    11 omega2 =    4.001876e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.016815e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.476299e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.476299e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.685567e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    1.008841e-08
+ ik_interpolate =     4 is =     2 omega2 =    9.552442e-08
+ ik_interpolate =     4 is =     3 omega2 =    1.260162e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.260162e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.102310e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.102310e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.155160e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.155160e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.531716e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.315107e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.443730e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.205464e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.482739e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.608713e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.608713e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    8.874865e-08
+ ik_interpolate =     5 is =     2 omega2 =    8.874865e-08
+ ik_interpolate =     5 is =     3 omega2 =    9.830664e-08
+ ik_interpolate =     5 is =     4 omega2 =    9.830664e-08
+ ik_interpolate =     5 is =     5 omega2 =    1.827701e-07
+ ik_interpolate =     5 is =     6 omega2 =    2.021322e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.122044e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.122044e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.117687e-07
+ ik_interpolate =     5 is =    10 omega2 =    4.001876e-07
+ ik_interpolate =     5 is =    11 omega2 =    4.001876e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.016815e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.476299e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.476299e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.685567e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    1.008841e-08
+ ik_interpolate =     6 is =     2 omega2 =    9.552442e-08
+ ik_interpolate =     6 is =     3 omega2 =    1.260162e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.260162e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.102310e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.102310e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.155160e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.155160e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.531716e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.315107e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.443730e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.205464e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.482739e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.608713e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.608713e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    1.008841e-08
+ ik_interpolate =     7 is =     2 omega2 =    9.552442e-08
+ ik_interpolate =     7 is =     3 omega2 =    1.260162e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.260162e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.102310e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.102310e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.155160e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.155160e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.531716e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.315107e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.443730e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.205464e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.482739e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.608713e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.608713e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    5.270761e-09
+ ik_interpolate =     8 is =     2 omega2 =    5.270761e-09
+ ik_interpolate =     8 is =     3 omega2 =    5.270761e-09
+ ik_interpolate =     8 is =     4 omega2 =    1.131130e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.131130e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.131130e-07
+ ik_interpolate =     8 is =     7 omega2 =    3.860550e-07
+ ik_interpolate =     8 is =     8 omega2 =    3.860550e-07
+ ik_interpolate =     8 is =     9 omega2 =    3.860550e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.428960e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.428960e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.356228e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.660072e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.660072e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.660072e-06
+
+ Temperature = 1.000000e+02 K
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     1 :  DIFF = N/A
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     2 :  DIFF =    6.368975e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     3 :  DIFF =    6.191358e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     4 :  DIFF =    6.058629e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     5 :  DIFF =    5.964858e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     6 :  DIFF =    5.905154e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     7 :  DIFF =    5.875496e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     8 :  DIFF =    5.872600e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER     9 :  DIFF =    5.893790e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    10 :  DIFF =    5.936901e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    11 :  DIFF =    6.000185e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    12 :  DIFF =    6.082237e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    13 :  DIFF =    6.181939e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    14 :  DIFF =    6.298404e-07
+ Detect imaginary :   knum = 11 is = 1
+  xk =    0.000000e+00  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    15 :  DIFF =    6.430937e-07
+ Detect imaginary :   knum = 43 is = 1
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 2
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+ Detect imaginary :   knum = 43 is = 3
+  xk =   -5.000000e-01  xk =   -5.000000e-01  xk =   -5.000000e-01
+  onsite V4 is positive
+
+  SCPH ITER    16 :  DIFF =    9.852820e-06
+  SCPH ITER    17 :  DIFF =    2.526956e-05
+  SCPH ITER    18 :  DIFF =    4.253921e-06
+  SCPH ITER    19 :  DIFF =    3.771396e-06
+  SCPH ITER    20 :  DIFF =    3.189914e-06
+  SCPH ITER    21 :  DIFF =    2.372966e-06
+  SCPH ITER    22 :  DIFF =    1.233472e-06
+  SCPH ITER    23 :  DIFF =    2.533502e-07
+  SCPH ITER    24 :  DIFF =    4.832445e-08
+  SCPH ITER    25 :  DIFF =    4.331730e-08
+  SCPH ITER    26 :  DIFF =    3.875570e-08
+  SCPH ITER    27 :  DIFF =    3.467155e-08
+  SCPH ITER    28 :  DIFF =    3.101295e-08
+  SCPH ITER    29 :  DIFF =    2.773665e-08
+  SCPH ITER    30 :  DIFF =    2.480347e-08
+  SCPH ITER    31 :  DIFF =    2.217810e-08
+  SCPH ITER    32 :  DIFF =    1.982873e-08
+  SCPH ITER    33 :  DIFF =    1.772674e-08
+  SCPH ITER    34 :  DIFF =    1.584640e-08
+  SCPH ITER    35 :  DIFF =    1.416458e-08
+  SCPH ITER    36 :  DIFF =    1.266052e-08
+  SCPH ITER    37 :  DIFF =    1.131559e-08
+  SCPH ITER    38 :  DIFF =    1.011308e-08
+  SCPH ITER    39 :  DIFF =    9.037997e-09
+  SCPH ITER    40 :  DIFF =    8.076929e-09
+  SCPH ITER    41 :  DIFF =    7.217837e-09
+  SCPH ITER    42 :  DIFF =    6.449955e-09
+  SCPH ITER    43 :  DIFF =    5.763642e-09
+  SCPH ITER    44 :  DIFF =    5.150242e-09
+  SCPH ITER    45 :  DIFF =    4.602054e-09
+  SCPH ITER    46 :  DIFF =    4.112158e-09
+  SCPH ITER    47 :  DIFF =    3.674365e-09
+  SCPH ITER    48 :  DIFF =    3.283155e-09
+  SCPH ITER    49 :  DIFF =    2.933571e-09
+  SCPH ITER    50 :  DIFF =    2.621189e-09
+  SCPH ITER    51 :  DIFF =    2.342067e-09
+  SCPH ITER    52 :  DIFF =    2.092650e-09
+  SCPH ITER    53 :  DIFF =    1.869792e-09
+  SCPH ITER    54 :  DIFF =    1.670671e-09
+  SCPH ITER    55 :  DIFF =    1.492748e-09
+  SCPH ITER    56 :  DIFF =    1.333776e-09
+  SCPH ITER    57 :  DIFF =    1.191733e-09
+  SCPH ITER    58 :  DIFF =    1.064820e-09
+  SCPH ITER    59 :  DIFF =    9.514323e-10
+  SCPH ITER    60 :  DIFF =    8.501065e-10
+  SCPH ITER    61 :  DIFF =    7.596227e-10
+  SCPH ITER    62 :  DIFF =    6.786979e-10
+  SCPH ITER    63 :  DIFF =    6.064780e-10
+  SCPH ITER    64 :  DIFF =    5.419515e-10
+  SCPH ITER    65 :  DIFF =    4.841973e-10
+  SCPH ITER    66 :  DIFF =    4.326168e-10
+  SCPH ITER    67 :  DIFF =    3.866137e-10
+  SCPH ITER    68 :  DIFF =    3.454081e-10
+  SCPH ITER    69 :  DIFF =    3.086911e-10
+  SCPH ITER    70 :  DIFF =    2.758229e-10
+  SCPH ITER    71 :  DIFF =    2.466376e-10
+  SCPH ITER    72 :  DIFF =    2.203292e-10
+  SCPH ITER    73 :  DIFF =    1.968277e-10
+  SCPH ITER    74 :  DIFF =    1.758400e-10
+  SCPH ITER    75 :  DIFF =    1.571656e-10
+  SCPH ITER    76 :  DIFF =    1.405318e-10
+  SCPH ITER    77 :  DIFF =    1.256486e-10
+  SCPH ITER    78 :  DIFF =    1.121097e-10
+  SCPH ITER    79 :  DIFF =    1.002669e-10
+  SCPH ITER    80 :  DIFF =    8.960601e-11
+  DIFF < SCPH_TOL : break SCPH loop
+ Temp = 1.000000e+02 : convergence achieved in    80 iterations.
+New eigenvalues
+ ik_interpolate =     1 is =     1 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     2 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     3 omega2 =    0.000000e+00
+ ik_interpolate =     1 is =     4 omega2 =    1.279190e-07
+ ik_interpolate =     1 is =     5 omega2 =    1.279190e-07
+ ik_interpolate =     1 is =     6 omega2 =    1.279190e-07
+ ik_interpolate =     1 is =     7 omega2 =    1.522978e-07
+ ik_interpolate =     1 is =     8 omega2 =    1.522978e-07
+ ik_interpolate =     1 is =     9 omega2 =    1.522978e-07
+ ik_interpolate =     1 is =    10 omega2 =    4.206099e-07
+ ik_interpolate =     1 is =    11 omega2 =    4.206099e-07
+ ik_interpolate =     1 is =    12 omega2 =    4.206099e-07
+ ik_interpolate =     1 is =    13 omega2 =    3.447547e-06
+ ik_interpolate =     1 is =    14 omega2 =    3.447547e-06
+ ik_interpolate =     1 is =    15 omega2 =    3.447547e-06
+
+ ik_interpolate =     2 is =     1 omega2 =    8.247344e-08
+ ik_interpolate =     2 is =     2 omega2 =    8.247344e-08
+ ik_interpolate =     2 is =     3 omega2 =    9.441589e-08
+ ik_interpolate =     2 is =     4 omega2 =    9.441589e-08
+ ik_interpolate =     2 is =     5 omega2 =    1.774640e-07
+ ik_interpolate =     2 is =     6 omega2 =    1.945659e-07
+ ik_interpolate =     2 is =     7 omega2 =    2.046684e-07
+ ik_interpolate =     2 is =     8 omega2 =    2.046684e-07
+ ik_interpolate =     2 is =     9 omega2 =    3.051747e-07
+ ik_interpolate =     2 is =    10 omega2 =    3.943592e-07
+ ik_interpolate =     2 is =    11 omega2 =    3.943592e-07
+ ik_interpolate =     2 is =    12 omega2 =    2.009209e-06
+ ik_interpolate =     2 is =    13 omega2 =    3.456434e-06
+ ik_interpolate =     2 is =    14 omega2 =    3.456434e-06
+ ik_interpolate =     2 is =    15 omega2 =    3.674131e-06
+
+ ik_interpolate =     3 is =     1 omega2 =    8.247344e-08
+ ik_interpolate =     3 is =     2 omega2 =    8.247344e-08
+ ik_interpolate =     3 is =     3 omega2 =    9.441589e-08
+ ik_interpolate =     3 is =     4 omega2 =    9.441589e-08
+ ik_interpolate =     3 is =     5 omega2 =    1.774640e-07
+ ik_interpolate =     3 is =     6 omega2 =    1.945659e-07
+ ik_interpolate =     3 is =     7 omega2 =    2.046684e-07
+ ik_interpolate =     3 is =     8 omega2 =    2.046684e-07
+ ik_interpolate =     3 is =     9 omega2 =    3.051747e-07
+ ik_interpolate =     3 is =    10 omega2 =    3.943592e-07
+ ik_interpolate =     3 is =    11 omega2 =    3.943592e-07
+ ik_interpolate =     3 is =    12 omega2 =    2.009209e-06
+ ik_interpolate =     3 is =    13 omega2 =    3.456434e-06
+ ik_interpolate =     3 is =    14 omega2 =    3.456434e-06
+ ik_interpolate =     3 is =    15 omega2 =    3.674131e-06
+
+ ik_interpolate =     4 is =     1 omega2 =    6.905333e-09
+ ik_interpolate =     4 is =     2 omega2 =    8.775927e-08
+ ik_interpolate =     4 is =     3 omega2 =    1.173172e-07
+ ik_interpolate =     4 is =     4 omega2 =    1.173172e-07
+ ik_interpolate =     4 is =     5 omega2 =    2.041982e-07
+ ik_interpolate =     4 is =     6 omega2 =    2.041982e-07
+ ik_interpolate =     4 is =     7 omega2 =    2.102008e-07
+ ik_interpolate =     4 is =     8 omega2 =    2.102008e-07
+ ik_interpolate =     4 is =     9 omega2 =    3.497500e-07
+ ik_interpolate =     4 is =    10 omega2 =    4.232188e-07
+ ik_interpolate =     4 is =    11 omega2 =    1.438103e-06
+ ik_interpolate =     4 is =    12 omega2 =    2.195800e-06
+ ik_interpolate =     4 is =    13 omega2 =    3.463312e-06
+ ik_interpolate =     4 is =    14 omega2 =    3.598781e-06
+ ik_interpolate =     4 is =    15 omega2 =    3.598781e-06
+
+ ik_interpolate =     5 is =     1 omega2 =    8.247344e-08
+ ik_interpolate =     5 is =     2 omega2 =    8.247344e-08
+ ik_interpolate =     5 is =     3 omega2 =    9.441589e-08
+ ik_interpolate =     5 is =     4 omega2 =    9.441589e-08
+ ik_interpolate =     5 is =     5 omega2 =    1.774640e-07
+ ik_interpolate =     5 is =     6 omega2 =    1.945659e-07
+ ik_interpolate =     5 is =     7 omega2 =    2.046684e-07
+ ik_interpolate =     5 is =     8 omega2 =    2.046684e-07
+ ik_interpolate =     5 is =     9 omega2 =    3.051747e-07
+ ik_interpolate =     5 is =    10 omega2 =    3.943592e-07
+ ik_interpolate =     5 is =    11 omega2 =    3.943592e-07
+ ik_interpolate =     5 is =    12 omega2 =    2.009209e-06
+ ik_interpolate =     5 is =    13 omega2 =    3.456434e-06
+ ik_interpolate =     5 is =    14 omega2 =    3.456434e-06
+ ik_interpolate =     5 is =    15 omega2 =    3.674131e-06
+
+ ik_interpolate =     6 is =     1 omega2 =    6.905333e-09
+ ik_interpolate =     6 is =     2 omega2 =    8.775927e-08
+ ik_interpolate =     6 is =     3 omega2 =    1.173172e-07
+ ik_interpolate =     6 is =     4 omega2 =    1.173172e-07
+ ik_interpolate =     6 is =     5 omega2 =    2.041982e-07
+ ik_interpolate =     6 is =     6 omega2 =    2.041982e-07
+ ik_interpolate =     6 is =     7 omega2 =    2.102008e-07
+ ik_interpolate =     6 is =     8 omega2 =    2.102008e-07
+ ik_interpolate =     6 is =     9 omega2 =    3.497500e-07
+ ik_interpolate =     6 is =    10 omega2 =    4.232188e-07
+ ik_interpolate =     6 is =    11 omega2 =    1.438103e-06
+ ik_interpolate =     6 is =    12 omega2 =    2.195800e-06
+ ik_interpolate =     6 is =    13 omega2 =    3.463312e-06
+ ik_interpolate =     6 is =    14 omega2 =    3.598781e-06
+ ik_interpolate =     6 is =    15 omega2 =    3.598781e-06
+
+ ik_interpolate =     7 is =     1 omega2 =    6.905333e-09
+ ik_interpolate =     7 is =     2 omega2 =    8.775927e-08
+ ik_interpolate =     7 is =     3 omega2 =    1.173172e-07
+ ik_interpolate =     7 is =     4 omega2 =    1.173172e-07
+ ik_interpolate =     7 is =     5 omega2 =    2.041982e-07
+ ik_interpolate =     7 is =     6 omega2 =    2.041982e-07
+ ik_interpolate =     7 is =     7 omega2 =    2.102008e-07
+ ik_interpolate =     7 is =     8 omega2 =    2.102008e-07
+ ik_interpolate =     7 is =     9 omega2 =    3.497500e-07
+ ik_interpolate =     7 is =    10 omega2 =    4.232188e-07
+ ik_interpolate =     7 is =    11 omega2 =    1.438103e-06
+ ik_interpolate =     7 is =    12 omega2 =    2.195800e-06
+ ik_interpolate =     7 is =    13 omega2 =    3.463312e-06
+ ik_interpolate =     7 is =    14 omega2 =    3.598781e-06
+ ik_interpolate =     7 is =    15 omega2 =    3.598781e-06
+
+ ik_interpolate =     8 is =     1 omega2 =    2.061673e-09
+ ik_interpolate =     8 is =     2 omega2 =    2.061673e-09
+ ik_interpolate =     8 is =     3 omega2 =    2.061673e-09
+ ik_interpolate =     8 is =     4 omega2 =    1.051865e-07
+ ik_interpolate =     8 is =     5 omega2 =    1.051865e-07
+ ik_interpolate =     8 is =     6 omega2 =    1.051865e-07
+ ik_interpolate =     8 is =     7 omega2 =    3.773692e-07
+ ik_interpolate =     8 is =     8 omega2 =    3.773692e-07
+ ik_interpolate =     8 is =     9 omega2 =    3.773692e-07
+ ik_interpolate =     8 is =    10 omega2 =    1.423561e-06
+ ik_interpolate =     8 is =    11 omega2 =    1.423561e-06
+ ik_interpolate =     8 is =    12 omega2 =    2.344174e-06
+ ik_interpolate =     8 is =    13 omega2 =    3.651705e-06
+ ik_interpolate =     8 is =    14 omega2 =    3.651705e-06
+ ik_interpolate =     8 is =    15 omega2 =    3.651705e-06
+
+  pc_scfph.scph_dymat  : Anharmonic dynamical matrix (restart file)
+  pc_scfph.scph_dfc2   : Anharmonic corrections to the second-order IFCs
+
+ Running postprocess of SCPH (calculation of free energy, MSD, DOS)
+ The number of temperature points: 13  
+   .............
+
+  pc_scfph.scph_bands  : SCPH band structure
+
+ Job finished at Tue Oct 27 15:41:40 2020
+

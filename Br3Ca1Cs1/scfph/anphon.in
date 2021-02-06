@@ -1,0 +1,42 @@
+&general
+  PREFIX = pc_scfph
+  MODE = SCPH
+  NKD = 3
+  KD =   Br  Ca  Cs
+  MASS = 79.904 40.078 132.91  
+  FCSXML = uc.xml
+  FC2XML = uc_2nd.xml 
+  NONANALYTIC = 2
+  #NA_SIGMA = 0.3
+  BORNINFO = BORN
+  BORNSYM = 1
+  TMIN = 100
+  TMAX = 700
+  DT = 50
+  EMIN = 0
+  EMAX = 1200
+  DELTA_E = 2
+  BCONNECT = 2
+/
+&scph
+  KMESH_INTERPOLATE = 2 2 2  # same as supercell size, e.g. for 4*4*4 supercell, use a KMESH_INTERPOLATE of 4 4 4.
+  KMESH_SCPH = 4 4 4         # equal to or a multiple of the number of KMESH_INTERPOLATE in the same direction.
+  SELF_OFFDIAG = 1
+  MIXALPHA = 0.1
+  MAXITER = 1000
+  RESTART_SCPH = 1
+/
+&cell
+  1.8897261254578282 # factor in Bohr unit
+        5.6470184140008932    0.0000000000000000    0.0000000000000000
+        0.0000000000000000    5.6470184140008932    0.0000000000000000
+        0.0000000000000000    0.0000000000000000    5.6470184140008932
+/
+&kpoint
+  2  # KPMODE = 2 unifor k grid for phonon DOS and thermal conductivity
+  12 12 12
+/
+&analysis
+  DOS = 1
+  PRINTMSD = 1
+/
