@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
+import os
 
 mpl.rc('font', **{'family': 'Times New Roman','weight':'normal', 'sans-serif': ['Helvetica']})
 mpl.rc('xtick', labelsize=12)
@@ -60,7 +61,22 @@ def plot_sr_temp(file_name_low_T, file_name_high_T, file_name_max_T):
     plt.show()
 
 
-def plot_sr_methods(file_path_1, file_path_2):
+def plot_sr_methods(file_path_1, file_path_2, fig_name, **kwargs):
+
+    """
+
+    :param file_path_1: str.
+    :param file_path_2: str.
+    :param fig_name: str.
+    :param kwargs:
+    xmax: the max value of the x-axis
+    ymax: the max value of the y-axis
+
+    :return:
+    """
+    allowed_kwargs={'xmin', 'xmax', 'ymin', 'ymax'}
+    xmax= kwargs.get('xmax')
+    ymin = kwargs.get('ymin')
     tau_1 = np.loadtxt(file_path_1)
     tau_2 = np.loadtxt(file_path_2)
 
@@ -72,7 +88,7 @@ def plot_sr_methods(file_path_1, file_path_2):
     plt.scatter(tau_1[start_index:,2] * kayser_to_mev, 1/tau_1[start_index:,3], c='lightskyblue', s=markersize, marker='o')
     plt.scatter(tau_2[start_index:,2] * kayser_to_mev, 1/tau_2[start_index:,3], c='#ff474c', s=markersize, marker='o')
     x=np.arange(0, 30, 0.1)
-    plt.plot(x, x, color='k', linestyle='-', linewidth=1.5)
+    plt.plot(x, 2*x, color='k', linestyle='-', linewidth=1.5)
     plt.yscale('log')
     plt.tick_params(axis='both', which='both', direction='in', right=True, top=True)
     plt.grid(b=True, which='major', axis='both', linestyle='--')
@@ -87,8 +103,8 @@ def plot_sr_methods(file_path_1, file_path_2):
 
 
     # plt.axis(xmin=0, xmax=30, ymin=0, ymax=100)
-    plt.xlim((0, 25))
-    plt.ylim((0.01, 100))
+    plt.xlim((0, xmax))
+    plt.ylim(bottom=ymin)
 
     plt.xlabel('Energy (meV)', fontsize=labelsize)
     plt.ylabel('Scattering rates (ps$^{-1}$)', fontsize=labelsize)
@@ -96,7 +112,8 @@ def plot_sr_methods(file_path_1, file_path_2):
     plt.yticks(fontsize=14)
     # plt.gca().set_aspect(1.0 / plt.gca().get_data_ratio(), adjustable='box')
     # plt.tight_layout()
-    plt.savefig('./pictures/scattering_rate_2.png', dpi=400)
+    fname = os.path.join('./pictures', fig_name)
+    plt.savefig(fname, dpi=400)
     plt.show()
 
 if __name__=='__main__':
@@ -105,10 +122,19 @@ if __name__=='__main__':
     # tau_Br3CaCs_600 = './Br3Ca1Cs1/scfph/kapa_300/tau600K_iso.dat'
     # plot_sr_temp(tau_Br3CaCs_100, tau_Br3CaCs_300, tau_Br3CaCs_600)
 
+    # tau_1 = './Br3Cd1Cs1/phonons/tau300K_iso.dat'
+    # tau_2 = './Br3Cd1Cs1/scfph2/kapa_300/tau300K_iso.dat'
+    # plot_sr_methods(tau_1, tau_2, fig_name='scattering_rate_BrCdCs.png', xmax=25, ymin=0.01)
 
-    tau_1 = './Br3Cd1Cs1/phonons/tau300K_iso.dat'
-    tau_2 = './Br3Cd1Cs1/scfph2/kapa_300/tau300K_iso.dat'
-    plot_sr_methods(tau_1, tau_2)
+
+    tau_1 = './BrCsSn/phonons/tau300K_iso.dat'
+    tau_2 = './BrCsSn/scfph/kapa_300/tau300K_iso.dat'
+    plot_sr_methods(tau_1, tau_2, fig_name='scattering_rate_BrCsSn.png', xmax=20, ymin=0.01)
+
+    # tau_1 = './Br3Cd1Cs1/phonons/tau300K_iso.dat'
+    # tau_2 = './BrCsSn/scfph/kapa_300/tau300K_iso.dat'
+    # plot_sr_methods(tau_1, tau_2, fig_name='scattering_rate_BrCsSn.png', xmax=20, ymin=0.01)
+
 
 
 
